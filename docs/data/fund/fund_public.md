@@ -2,11 +2,11 @@
 
 ### 基金基本信息
 
-接口: fund_em_fund_name
+接口: fund_name_em
 
 目标地址: http://fund.eastmoney.com/fund.html
 
-描述: 东方财富网-天天基金网-基金数据-所有基金的基本信息数据 
+描述: 东方财富网-天天基金网-基金数据-所有基金的基本信息数据
 
 限量: 单次返回当前时刻所有历史数据
 
@@ -31,8 +31,8 @@
 ```python
 import akshare as ak
 
-fund_em_fund_name_df = ak.fund_em_fund_name()
-print(fund_em_fund_name_df)
+fund_name_em_df = ak.fund_name_em()
+print(fund_name_em_df)
 ```
 
 数据示例
@@ -50,6 +50,72 @@ print(fund_em_fund_name_df)
 10225  959991  XZJQLLXYSHHA  ...   混合型  XINGZHENGJINQILINLINGXIANYOUSHIHUNHEA
 10226  959993  XZJQLLXYSHHC  ...   混合型  XINGZHENGJINQILINLINGXIANYOUSHIHUNHEC
 10227  980003   TPYLGYGDCYZ  ...   债券型   TAIPINGYANGLIUGEYUEGUNDONGCHIYOUZHAI
+```
+
+### 基金基本信息-指数型
+
+接口: fund_info_index_em
+
+目标地址: http://fund.eastmoney.com/trade/zs.html
+
+描述: 东方财富网-天天基金网-基金数据-基金基本信息-指数型
+
+限量: 单次返回当前时刻所有历史数据
+
+输入参数
+
+| 名称        | 类型  | 描述                                                                                    |
+|-----------|-----|---------------------------------------------------------------------------------------|
+| symbol    | str | symbol="全部"; choice of {"全部", "沪深指数", "行业主题", "大盘指数", "中盘指数", "小盘指数", "股票指数", "债券指数"} |
+| indicator | str | indicator="全部"; choice of {"全部", "被动指数型", "增强指数型"}                                    |
+
+输出参数
+
+| 名称   | 类型      | 描述      |
+|------|---------|---------|
+| 基金代码 | object  | -       |
+| 基金名称 | object  | -       |
+| 单位净值 | float64 | -       |
+| 日期   | object  | -       |
+| 日增长率 | float64 | 注意单位: % |
+| 近1周  | float64 | 注意单位: % |
+| 近1月  | float64 | 注意单位: % |
+| 近3月  | float64 | 注意单位: % |
+| 近6月  | float64 | 注意单位: % |
+| 近1年  | float64 | 注意单位: % |
+| 近2年  | float64 | 注意单位: % |
+| 近3年  | float64 | 注意单位: % |
+| 今年来  | float64 | 注意单位: % |
+| 成立来  | float64 | 注意单位: % |
+| 手续费  | float64 | 注意单位: % |
+| 起购金额 | object  | -       |
+| 跟踪标的 | object  | -       |
+| 跟踪方式 | object  | -       |
+
+接口示例
+
+```python
+import akshare as ak
+
+fund_info_index_em_df = ak.fund_info_index_em(symbol="沪深指数", indicator="增强指数型")
+print(fund_info_index_em_df)
+```
+
+数据示例
+
+```
+     基金代码            基金名称         单位净值    日期  ...   手续费  起购金额  跟踪标的   跟踪方式
+0    005313        万家中证1000指数增强A  1.3029  2022-07-26  ...  0.15   10元  沪深指数  增强指数型
+1    005314        万家中证1000指数增强C  1.2988  2022-07-26  ...  0.00   10元  沪深指数  增强指数型
+2    004194        招商中证1000指数增强A  1.5630  2022-07-26  ...  0.12   10元  沪深指数  增强指数型
+3    004195        招商中证1000指数增强C  1.5469  2022-07-26  ...  0.00   10元  沪深指数  增强指数型
+4    007178           浙商中华预期高股息A  1.1339  2022-07-26  ...  0.12   10元  沪深指数  增强指数型
+..      ...                  ...     ...         ...  ...   ...   ...   ...    ...
+275  015784      中信建投中证1000指数增强A  0.9946  2022-07-22  ...  0.15   10元  沪深指数  增强指数型
+276  015785      中信建投中证1000指数增强C  0.9943  2022-07-22  ...  0.00   10元  沪深指数  增强指数型
+277  015921  申万菱信国证2000指数增强型发起式A  0.9945  2022-07-22  ...  0.12   10元  沪深指数  增强指数型
+278  015148        华安中证1000指数增强A  0.9999  2022-07-22  ...  0.12   10元  沪深指数  增强指数型
+279  016134       嘉实沪深300指数研究增强C  0.9614  2022-07-26  ...  0.00   10元  沪深指数  增强指数型
 ```
 
 ### 基金申购状态
@@ -108,14 +174,14 @@ print(fund_purchase_em_df)
 14956  14957  970119  兴证资管金麒麟恒睿致远一年持有混合A  ...    0  0.000000e+00  1.20
 14957  14958  970120  兴证资管金麒麟恒睿致远一年持有混合B  ...    0  0.000000e+00   NaN
 14958  14959  970121  兴证资管金麒麟恒睿致远一年持有混合C  ...    0  0.000000e+00  0.00
-14959  14960  980003         太平洋六个月滚动持有债  ...  100  1.000000e+11  0.05   
+14959  14960  980003         太平洋六个月滚动持有债  ...  100  1.000000e+11  0.05
 ```
 
 ### 基金净值
 
 #### 开放式基金-实时数据
 
-接口: fund_em_open_fund_daily
+接口: fund_open_fund_daily_em
 
 目标地址: http://fund.eastmoney.com/fund.html#os_0;isall_0;ft_;pt_1
 
@@ -150,8 +216,8 @@ print(fund_purchase_em_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_daily_df = ak.fund_em_open_fund_daily()
-print(fund_em_open_fund_daily_df)
+fund_open_fund_daily_em_df = ak.fund_open_fund_daily_em()
+print(fund_open_fund_daily_em_df)
 ```
 
 数据示例
@@ -165,15 +231,15 @@ print(fund_em_open_fund_daily_df)
 4      008135               华宸未来价值先锋          1.4346  ...  开放申购  开放赎回  0.15%
        ...                    ...             ...  ...   ...   ...    ...
 10005  009209       长信稳利一年持有期混合(FOF)                  ...  开放申购   封闭期  0.80%
-10006  873002  广发资管全球精选一年持有期债券(QDII)                  ...   封闭期   封闭期       
+10006  873002  广发资管全球精选一年持有期债券(QDII)                  ...   封闭期   封闭期
 10007  007401       浦银颐和稳健养老一年(FOF)A                  ...  开放申购  开放赎回  0.08%
-10008  010672        鹏华创新未来18个月封闭混合B                  ...   封闭期  开放赎回       
-10009  010650       易方达创新未来18个月封闭混合B                  ...   封闭期  开放赎回       
+10008  010672        鹏华创新未来18个月封闭混合B                  ...   封闭期  开放赎回
+10009  010650       易方达创新未来18个月封闭混合B                  ...   封闭期  开放赎回
 ```
 
 #### 开放式基金-历史数据
 
-接口: fund_em_open_fund_info
+接口: fund_open_fund_info_em
 
 目标地址: http://fund.eastmoney.com/pingzhongdata/710001.js
 
@@ -185,10 +251,10 @@ print(fund_em_open_fund_daily_df)
 
 | 名称        | 类型  | 描述                                                           |
 |-----------|-----|--------------------------------------------------------------|
-| fund      | str | fund="710001"; 需要基金代码, 可以通过调用 **fund_em_open_fund_daily** 获取 |
-| indicator | str | indicator="单位净值走势";  参见 **fund_em_open_fund_info** 参数一览表     |
+| fund      | str | fund="710001"; 需要基金代码, 可以通过调用 **fund_open_fund_daily_em** 获取 |
+| indicator | str | indicator="单位净值走势";  参见 **fund_open_fund_info_em** 参数一览表     |
 
-fund_em_open_fund_info 参数一览表
+fund_open_fund_info_em 参数一览表
 
 | 参数名称    | 备注  |
 |---------|-----|
@@ -213,8 +279,8 @@ fund_em_open_fund_info 参数一览表
 ```python
 import akshare as ak
 
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="710001", indicator="单位净值走势")
-print(fund_em_open_fund_info_df)
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="710001", indicator="单位净值走势")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-单位净值走势
@@ -231,7 +297,7 @@ print(fund_em_open_fund_info_df)
 2217  2020-11-17  2.8167 -1.23
 2218  2020-11-18  2.8082  -0.3
 2219  2020-11-19  2.8239  0.56
-2220  2020-11-20  2.8493   0.9        
+2220  2020-11-20  2.8493   0.9
 ```
 
 输出参数-累计净值走势
@@ -246,8 +312,8 @@ print(fund_em_open_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="710001", indicator="累计净值走势")
-print(fund_em_open_fund_info_df)
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="710001", indicator="累计净值走势")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-累计净值走势
@@ -264,7 +330,7 @@ print(fund_em_open_fund_info_df)
 2217  2020-11-17  2.8167
 2218  2020-11-18  2.8082
 2219  2020-11-19  2.8239
-2220  2020-11-20  2.8493    
+2220  2020-11-20  2.8493
 ```
 
 输出参数-累计收益率走势
@@ -279,8 +345,8 @@ print(fund_em_open_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="710001", indicator="累计收益率走势")
-print(fund_em_open_fund_info_df)
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="710001", indicator="累计收益率走势")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-累计收益率走势
@@ -297,7 +363,7 @@ print(fund_em_open_fund_info_df)
 121  2020-11-17  15.01
 122  2020-11-18  14.67
 123  2020-11-19  15.31
-124  2020-11-20  16.35   
+124  2020-11-20  16.35
 ```
 
 输出参数-同类排名走势
@@ -313,8 +379,8 @@ print(fund_em_open_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="710001", indicator="同类排名走势")
-print(fund_em_open_fund_info_df)
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="710001", indicator="同类排名走势")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-同类排名走势
@@ -331,7 +397,7 @@ print(fund_em_open_fund_info_df)
 1913  2020-11-17           3768        3884
 1914  2020-11-18           3756        3890
 1915  2020-11-19           3600        3767
-1916  2020-11-20           3734        3915   
+1916  2020-11-20           3734        3915
 ```
 
 输出参数-同类排名百分比
@@ -346,8 +412,8 @@ print(fund_em_open_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="710001", indicator="同类排名百分比")
-print(fund_em_open_fund_info_df)
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="710001", indicator="同类排名百分比")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-同类排名百分比
@@ -364,7 +430,7 @@ print(fund_em_open_fund_info_df)
 2000  2020-03-16  36.92
 2001  2020-03-17  28.71
 2002  2020-03-18  36.42
-2003  2020-03-19  43.07    
+2003  2020-03-19  43.07
 ```
 
 输出参数-分红送配详情
@@ -382,8 +448,8 @@ print(fund_em_open_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="161606", indicator="分红送配详情")
-print(fund_em_open_fund_info_df)
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="161606", indicator="分红送配详情")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-分红送配详情
@@ -408,8 +474,9 @@ print(fund_em_open_fund_info_df)
 
 ```python
 import akshare as ak
-fund_em_open_fund_info_df = ak.fund_em_open_fund_info(fund="161606", indicator="拆分详情")
-print(fund_em_open_fund_info_df)
+
+fund_open_fund_info_em_df = ak.fund_open_fund_info_em(fund="161606", indicator="拆分详情")
+print(fund_open_fund_info_em_df)
 ```
 
 数据示例-拆分详情
@@ -427,7 +494,7 @@ print(fund_em_open_fund_info_df)
 
 #### 货币型基金-实时数据
 
-接口: fund_em_money_fund_daily
+接口: fund_money_fund_daily_em
 
 目标地址: http://fund.eastmoney.com/HBJJ_pjsyl.html
 
@@ -464,8 +531,8 @@ print(fund_em_open_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_money_fund_daily_df = ak.fund_em_money_fund_daily()
-print(fund_em_money_fund_daily_df)
+fund_money_fund_daily_em_df = ak.fund_money_fund_daily_em()
+print(fund_money_fund_daily_em_df)
 ```
 
 数据示例
@@ -487,7 +554,7 @@ print(fund_em_money_fund_daily_df)
 
 #### 货币型基金-历史数据
 
-接口: fund_em_money_fund_info
+接口: fund_money_fund_info_em
 
 目标地址: http://fundf10.eastmoney.com/jjjz_004186.html
 
@@ -499,7 +566,7 @@ print(fund_em_money_fund_daily_df)
 
 | 名称   | 类型  | 描述                                                                 |
 |------|-----|--------------------------------------------------------------------|
-| fund | str | fund="000009"; 需要基金代码, 可以通过调用 **ak.fund_em_money_fund_daily()** 获取 |
+| fund | str | fund="000009"; 需要基金代码, 可以通过调用 **ak.fund_money_fund_daily_em()** 获取 |
 
 输出参数
 
@@ -516,8 +583,8 @@ print(fund_em_money_fund_daily_df)
 ```python
 import akshare as ak
 
-fund_em_money_fund_info_df = ak.fund_em_money_fund_info(fund="000009")
-print(fund_em_money_fund_info_df)
+fund_money_fund_info_em_df = ak.fund_money_fund_info_em(fund="000009")
+print(fund_money_fund_info_em_df)
 ```
 
 数据示例
@@ -534,12 +601,12 @@ print(fund_em_money_fund_info_df)
 2420  2013-03-28   0.7068  3.0420  开放申购  开放赎回
 2421  2013-03-27   0.3729  3.1750  开放申购  开放赎回
 2422  2013-03-26   0.9561  3.4820  开放申购  开放赎回
-2423  2013-03-25  21.2775  3.4850   封闭期   封闭期       
+2423  2013-03-25  21.2775  3.4850   封闭期   封闭期
 ```
 
 #### 理财型基金-实时数据
 
-接口: fund_em_financial_fund_daily
+接口: fund_financial_fund_daily_em
 
 目标地址: http://fund.eastmoney.com/lcjj.html#1_1__0__ljjz,desc_1_os1
 
@@ -573,8 +640,8 @@ print(fund_em_money_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_financial_fund_daily_df = ak.fund_em_financial_fund_daily()
-print(fund_em_financial_fund_daily_df)
+fund_financial_fund_daily_em_df = ak.fund_financial_fund_daily_em()
+print(fund_financial_fund_daily_em_df)
 ```
 
 数据示例
@@ -595,7 +662,7 @@ print(fund_em_financial_fund_daily_df)
 
 #### 理财型基金-历史数据
 
-接口: fund_em_financial_fund_info
+接口: fund_financial_fund_info_em
 
 目标地址: http://fundf10.eastmoney.com/jjjz_000791.html
 
@@ -607,7 +674,7 @@ print(fund_em_financial_fund_daily_df)
 
 | 名称   | 类型  | 描述                                                                |
 |------|-----|-------------------------------------------------------------------|
-| fund | str | fund="000134"; 需要基金代码, 可以通过调用 **fund_em_financial_fund_daily** 获取 |
+| fund | str | fund="000134"; 需要基金代码, 可以通过调用 **fund_financial_fund_daily_em** 获取 |
 
 输出参数
 
@@ -624,8 +691,8 @@ print(fund_em_financial_fund_daily_df)
 ```python
 import akshare as ak
 
-fund_em_financial_fund_info_df = ak.fund_em_financial_fund_info(fund="000134")
-print(fund_em_financial_fund_info_df)
+fund_financial_fund_info_em_df = ak.fund_financial_fund_info_em(fund="000134")
+print(fund_financial_fund_info_em_df)
 ```
 
 数据示例
@@ -642,16 +709,16 @@ print(fund_em_financial_fund_info_df)
 1067  2017-05-28  1.0799  3.5470    开放申购   封闭期
 1068  2017-05-27  1.0799  3.3900    开放申购   封闭期
 1069  2017-05-26  1.2796  3.0770    开放申购   封闭期
-1070  2017-05-25  0.3810  1.4000     封闭期   封闭期   
+1070  2017-05-25  0.3810  1.4000     封闭期   封闭期
 ```
 
 #### 分级基金-实时数据
 
-接口: fund_em_graded_fund_daily
+接口: fund_graded_fund_daily_em
 
 目标地址: http://fund.eastmoney.com/fjjj.html#1_1__0__zdf,desc_1
 
-描述: 东方财富网-天天基金网-基金数据-分级基金-实时数据, 此接口数据每个交易日 **16:00～23:00** 
+描述: 东方财富网-天天基金网-基金数据-分级基金-实时数据, 此接口数据每个交易日 **16:00～23:00**
 
 限量: 单次返回当前时刻所有历史数据
 
@@ -682,30 +749,30 @@ print(fund_em_financial_fund_info_df)
 ```python
 import akshare as ak
 
-fund_em_graded_fund_daily_df = ak.fund_em_graded_fund_daily()
-print(fund_em_graded_fund_daily_df)
+fund_graded_fund_daily_em_df = ak.fund_graded_fund_daily_em()
+print(fund_graded_fund_daily_em_df)
 ```
 
 数据示例
 
 ```
        基金代码            基金简称    单位净值    累计净值  ...   日增长率      市价     折价率    手续费
-0    150232     申万菱信申万电子分级B  0.5598          ...  15.85  0.9080  -62.20       
-1    150174  信诚中证TMT产业主题分级B  0.6580  2.0740  ...  10.77    0.76  -15.50       
-2    150312   信诚中证智能家居指数分级B  0.7430  0.0960  ...  10.73  0.7570   -1.88       
-3    150310   信诚中证信息安全指数分级B  0.9090  0.1040  ...   9.92  1.0790  -18.70       
-4    150151  信诚中证800有色指数分级B    0.63  1.1180  ...   6.42  0.7110  -12.86       
+0    150232     申万菱信申万电子分级B  0.5598          ...  15.85  0.9080  -62.20
+1    150174  信诚中证TMT产业主题分级B  0.6580  2.0740  ...  10.77    0.76  -15.50
+2    150312   信诚中证智能家居指数分级B  0.7430  0.0960  ...  10.73  0.7570   -1.88
+3    150310   信诚中证信息安全指数分级B  0.9090  0.1040  ...   9.92  1.0790  -18.70
+4    150151  信诚中证800有色指数分级B    0.63  1.1180  ...   6.42  0.7110  -12.86
 ..      ...             ...     ...     ...  ...    ...     ...     ...    ...
-341  150252   招商中证煤炭等权指数分级B                  ...         0.5120               
-342  150324   工银中证环保产业指数分级B                  ...           0.74               
-343  150197   国泰国证有色金属行业分级B                  ...           0.44               
-344  150294   南方中证高铁产业指数分级B                  ...         0.4350               
+341  150252   招商中证煤炭等权指数分级B                  ...         0.5120
+342  150324   工银中证环保产业指数分级B                  ...           0.74
+343  150197   国泰国证有色金属行业分级B                  ...           0.44
+344  150294   南方中证高铁产业指数分级B                  ...         0.4350
 345  161825       银华中证800分级                  ...                         1.20%
 ```
 
 #### 分级基金-历史数据
 
-接口: fund_em_graded_fund_info
+接口: fund_graded_fund_info_em
 
 目标地址: http://fundf10.eastmoney.com/jjjz_004186.html
 
@@ -717,7 +784,7 @@ print(fund_em_graded_fund_daily_df)
 
 | 名称   | 类型  | 描述                                                             |
 |------|-----|----------------------------------------------------------------|
-| fund | str | fund="150232"; 需要基金代码, 可以通过调用 **fund_em_graded_fund_daily** 获取 |
+| fund | str | fund="150232"; 需要基金代码, 可以通过调用 **fund_graded_fund_daily_em** 获取 |
 
 输出参数
 
@@ -735,8 +802,8 @@ print(fund_em_graded_fund_daily_df)
 ```python
 import akshare as ak
 
-fund_em_graded_fund_info_df = ak.fund_em_graded_fund_info(fund="150232")
-print(fund_em_graded_fund_info_df)
+fund_graded_fund_info_em_df = ak.fund_graded_fund_info_em(fund="150232")
+print(fund_graded_fund_info_em_df)
 ```
 
 数据示例
@@ -758,7 +825,7 @@ print(fund_em_graded_fund_info_df)
 
 #### 场内交易基金-实时数据
 
-接口: fund_em_etf_fund_daily
+接口: fund_etf_fund_daily_em
 
 目标地址: http://fund.eastmoney.com/cnjy_dwjz.html
 
@@ -768,32 +835,33 @@ print(fund_em_graded_fund_info_df)
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述 |
-| -------- | ---- | ---- | --- |
-| - | -  | -    |   - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| 基金代码      | str   | Y        | -  |
-| 基金简称      | str   | Y        | -   |
-| 类型      | float   | Y        | -   |
-| 当前交易日-单位净值      | float   | Y        | 会返回具体的日期值作为字段   |
-| 当前交易日-累计净值      | float   | Y        | 会返回具体的日期值作为字段   |
-| 前一个交易日-单位净值      | float   | Y        | 会返回具体的日期值作为字段   |
-| 前一个交易日-累计净值      | float   | Y        | 会返回具体的日期值作为字段   |
-| 增长值      | float   | Y        | -   |
-| 增长率      | str   | Y        | -   |
-| 市价      | str   | Y        | -   |
-| 折价率      | str   | Y        | -   |
+| 名称          | 类型      | 描述            |
+|-------------|---------|---------------|
+| 基金代码        | object  | -             |
+| 基金简称        | object  | -             |
+| 类型          | float64 | -             |
+| 当前交易日-单位净值  | float64 | 会返回具体的日期值作为字段 |
+| 当前交易日-累计净值  | float64 | 会返回具体的日期值作为字段 |
+| 前一个交易日-单位净值 | float64 | 会返回具体的日期值作为字段 |
+| 前一个交易日-累计净值 | float64 | 会返回具体的日期值作为字段 |
+| 增长值         | float64 | -             |
+| 增长率         | object  | -             |
+| 市价          | object  | -             |
+| 折价率         | object  | -             |
 
 接口示例
 
 ```python
 import akshare as ak
-fund_em_etf_fund_daily_df = ak.fund_em_etf_fund_daily()
-print(fund_em_etf_fund_daily_df)
+
+fund_etf_fund_daily_em_df = ak.fund_etf_fund_daily_em()
+print(fund_etf_fund_daily_em_df)
 ```
 
 数据示例
@@ -815,7 +883,7 @@ print(fund_em_etf_fund_daily_df)
 
 #### 场内交易基金-历史数据
 
-接口: fund_em_etf_fund_info
+接口: fund_etf_fund_info_em
 
 目标地址: http://fundf10.eastmoney.com/jjjz_004186.html
 
@@ -825,81 +893,83 @@ print(fund_em_etf_fund_daily_df)
 
 输入参数
 
-| 名称   | 类型 |  描述 |
-| -------- | ---- |  --- |
-| fund | str|   fund="511280"; 基金代码, 可以通过调用 **fund_em_etf_fund_daily** 获取 |
-| start_date | str|   start_date="20000101"; 开始时间 |
-| end_date | str|   end_date="20500101"; 结束时间 |
+| 名称         | 类型  | 描述                                                             |
+|------------|-----|----------------------------------------------------------------|
+| fund       | str | fund="511280"; 基金代码, 可以通过调用 **ak.fund_etf_fund_daily_em()** 获取 |
+| start_date | str | start_date="20000101"; 开始时间                                    |
+| end_date   | str | end_date="20500101"; 结束时间                                      |
 
 输出参数
 
-| 名称          | 类型 | 描述           |
-| --------------- | ----- | ---------------- |
-| 净值日期      | object   |  -  |
-| 单位净值      | float64   |  -   |
-| 累计净值      | float64   | -   |
-| 日增长率      |  float64  |  注意单位(%)   |
-| 申购状态      | object   |  -   |
-| 赎回状态      | object   |  -   |
+| 名称   | 类型      | 描述      |
+|------|---------|---------|
+| 净值日期 | object  | -       |
+| 单位净值 | float64 | -       |
+| 累计净值 | float64 | -       |
+| 日增长率 | float64 | 注意单位: % |
+| 申购状态 | object  | -       |
+| 赎回状态 | object  | -       |
 
 接口示例
 
 ```python
 import akshare as ak
-fund_em_etf_fund_info_df = ak.fund_em_etf_fund_info(fund="511280", start_date="20000101", end_date="20500101")
-print(fund_em_etf_fund_info_df)
+
+fund_etf_fund_info_em_df = ak.fund_etf_fund_info_em(fund="511280", start_date="20000101", end_date="20500101")
+print(fund_etf_fund_info_em_df)
 ```
 
 数据示例
 
 ```
-    净值日期      单位净值    累计净值   日增长率  申购状态  赎回状态
-0    2020-04-30  112.1175  1.1212   0.03  场内买入  场内卖出
-1    2020-04-29  112.0788  1.1208  -0.05  场内买入  场内卖出
-2    2020-04-28  112.1330  1.1213  -0.01  场内买入  场内卖出
-3    2020-04-27  112.1415  1.1214  -0.03  场内买入  场内卖出
-4    2020-04-24  112.1748  1.1217   0.15  场内买入  场内卖出
-..          ...       ...     ...    ...   ...   ...
-473  2018-05-18  100.1054  1.0011         场内买入  场内卖出
-474  2018-05-14  100.0804  1.0008   0.02  场内买入  场内卖出
-475  2018-05-11    1.0006  1.0006         场内买入  场内卖出
-476  2018-05-04    1.0003  1.0003   0.03  场内买入  场内卖出
-477  2018-05-03    1.0000  1.0000         场内买入  场内卖出    
+     净值日期      单位净值    累计净值  日增长率  申购状态  赎回状态
+0    2018-05-03    1.0000  1.0000   NaN  场内买入  场内卖出
+1    2018-05-04    1.0003  1.0003  0.03  场内买入  场内卖出
+2    2018-05-11    1.0006  1.0006   NaN  场内买入  场内卖出
+3    2018-05-14  100.0804  1.0008  0.02  场内买入  场内卖出
+4    2018-05-18  100.1054  1.0011   NaN  场内买入  场内卖出
+..          ...       ...     ...   ...   ...   ...
+779  2021-07-28  110.8370  1.1084 -0.02  场内买入  场内卖出
+780  2021-07-29  110.8154  1.1082 -0.02  场内买入  场内卖出
+781  2021-07-30  110.7640  1.1076 -0.05  场内买入  场内卖出
+782  2021-08-02  110.6097  1.1061 -0.14  场内买入  场内卖出
+783  2021-08-03  113.8015  1.1380  2.89  暂停申购  暂停赎回
 ```
 
 #### 香港基金-历史数据
 
-接口: fund_em_hk_fund_hist
+接口: fund_hk_fund_hist_em
 
 目标地址: http://overseas.1234567.com.cn/f10/FundJz/968092#FHPS
 
-描述: 获取东方财富网站-天天基金网-基金数据-香港基金-历史净值明细
+描述: 东方财富网站-天天基金网-基金数据-香港基金-历史净值明细
 
 限量: 单次返回指定 code 和 symbol 所有历史数据
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述 |
-| -------- | ---- | ---- | --- |
-| code | str| Y    |   code="1002200683"; 需要香港基金代码, 可以通过调用 **fund_em_hk_rank** 获取 |
-| symbol | str| Y    |   symbol="历史净值明细"; choice of {"历史净值明细", "分红送配详情"}  |
+| 名称     | 类型  | 描述                                                         |
+|--------|-----|------------------------------------------------------------|
+| code   | str | code="1002200683"; 需要香港基金代码, 可以通过调用 **fund_em_hk_rank** 获取 |
+| symbol | str | symbol="历史净值明细"; choice of {"历史净值明细", "分红送配详情"}            |
 
 输出参数-历史净值明细
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| 净值日期      | str   | Y        | -  |
-| 单位净值      | float   | Y        | -   |
-| 日增长值      | float   | Y        | -   |
-| 日增长率      |  float  | Y        | 注意单位: %  |
-| 单位      | str   | Y        | -   |
+| 名称   | 类型      | 描述      |
+|------|---------|---------|
+| 净值日期 | object  | -       |
+| 单位净值 | float64 | -       |
+| 日增长值 | float64 | -       |
+| 日增长率 | float64 | 注意单位: % |
+| 单位   | object  | -       |
 
 接口示例-历史净值明细
 
 ```python
 import akshare as ak
-fund_em_hk_fund_hist_df = ak.fund_em_hk_fund_hist(code='1002200683', symbol="历史净值明细")
-print(fund_em_hk_fund_hist_df)
+
+fund_hk_fund_hist_em_df = ak.fund_hk_fund_hist_em(code='1002200683', symbol="历史净值明细")
+print(fund_hk_fund_hist_em_df)
 ```
 
 数据示例-历史净值明细
@@ -921,22 +991,22 @@ print(fund_em_hk_fund_hist_df)
 
 输出参数-分红送配详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ----------- |
-| 年份      | str   | Y        | -  |
-| 权益登记日      | str   | Y        | -   |
-| 除息日      | str   | Y        | -   |
-| 分红发放日      |  str  | Y        | - |
-| 分红金额      | float   | Y        | -   |
-| 单位      | str   | Y        | -   |
+| 名称    | 类型      | 描述  |
+|-------|---------|-----|
+| 年份    | object  | -   |
+| 权益登记日 | object  | -   |
+| 除息日   | object  | -   |
+| 分红发放日 | object  | -   |
+| 分红金额  | float64 | -   |
+| 单位    | object  | -   |
 
 接口示例-分红送配详情
 
 ```python
 import akshare as ak
 
-fund_em_hk_fund_hist_df = ak.fund_em_hk_fund_hist(code='1002200683', symbol="分红送配详情")
-print(fund_em_hk_fund_hist_df)
+fund_hk_fund_hist_em_df = ak.fund_hk_fund_hist_em(code='1002200683', symbol="分红送配详情")
+print(fund_hk_fund_hist_em_df)
 ```
 
 数据示例-分红送配详情
@@ -966,26 +1036,27 @@ print(fund_em_hk_fund_hist_df)
 
 输入参数
 
-| 名称   | 类型 | 描述 |
-| -------- | ---- |  --- |
-| - | -  |   - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| 序号      | int64   |  -  |
-| 基金代码      | object   |  -  |
-| 基金简称      | object   |  -  |
-| 权益登记日      | object   |  -  |
-| 除息日期      | object   |  -  |
-| 分红      | float64   |  注意单位: 元/份  |
-| 分红发放日      | object   |  -  |
+| 名称    | 类型      | 描述        |
+|-------|---------|-----------|
+| 序号    | int64   | -         |
+| 基金代码  | object  | -         |
+| 基金简称  | object  | -         |
+| 权益登记日 | object  | -         |
+| 除息日期  | object  | -         |
+| 分红    | float64 | 注意单位: 元/份 |
+| 分红发放日 | object  | -         |
 
 接口示例
 
 ```python
 import akshare as ak
+
 fund_fh_em_df = ak.fund_fh_em()
 print(fund_fh_em_df)
 ```
@@ -1019,25 +1090,26 @@ print(fund_fh_em_df)
 
 输入参数
 
-| 名称   | 类型 | 描述 |
-| -------- | ---- |  --- |
-| - | -  |   - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| 序号      | int64   |  -  |
-| 基金代码      | object   |  -  |
-| 基金简称      | object   |  -  |
-| 拆分折算日      | object   |  -  |
-| 拆分类型      | object   |  -  |
-| 拆分折算      | float64   |  注意单位: 每份  |
+| 名称    | 类型      | 描述       |
+|-------|---------|----------|
+| 序号    | int64   | -        |
+| 基金代码  | object  | -        |
+| 基金简称  | object  | -        |
+| 拆分折算日 | object  | -        |
+| 拆分类型  | object  | -        |
+| 拆分折算  | float64 | 注意单位: 每份 |
 
 接口示例
 
 ```python
 import akshare as ak
+
 fund_cf_em_df = ak.fund_cf_em()
 print(fund_cf_em_df)
 ```
@@ -1116,7 +1188,7 @@ print(fund_fh_rank_em_df)
 
 #### 开放式基金排行
 
-接口: fund_em_open_fund_rank
+接口: fund_open_fund_rank_em
 
 目标地址: http://fund.eastmoney.com/data/fundranking.html
 
@@ -1158,8 +1230,8 @@ print(fund_fh_rank_em_df)
 ```python
 import akshare as ak
 
-fund_em_open_fund_rank_df = ak.fund_em_open_fund_rank(symbol="全部")
-print(fund_em_open_fund_rank_df)
+fund_open_fund_rank_em_df = ak.fund_open_fund_rank_em(symbol="全部")
+print(fund_open_fund_rank_em_df)
 ```
 
 数据示例
@@ -1419,45 +1491,46 @@ print(fund_em_hk_rank_df)
 84  85  968078             东方汇理创新动力股票基金累算  ...   35.8500      1002185389
 85  86  968077             东方汇理创新动力股票基金分派  ...   33.5200      1002185388
 86  87  968058  博时-安本标准精选新兴市场债券基金PRC类别A美元  ...                1002059492
-87  88  968060  博时-安本标准精选新兴市场债券基金PRC类别I美元  ...                1002059495           
+87  88  968060  博时-安本标准精选新兴市场债券基金PRC类别I美元  ...                1002059495
 ```
 
 ### 净值估算
 
-接口: fund_em_value_estimation
+接口: fund_value_estimation_em
 
 目标地址: http://fund.eastmoney.com/fundguzhi.html
 
-描述: 获取东方财富网-数据中心-净值估算
+描述: 东方财富网-数据中心-净值估算
 
 限量: 单次返回当前交易日指定 symbol 的所有数据
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述 |
-| -------- | ---- | ---- | --- |
-| symbol | str | Y    |   symbol='全部'; 默认返回所有数据; choice of {'全部', '股票型', '混合型', '债券型', '指数型', 'QDII', 'ETF联接', 'LOF', '场内交易基金'} |
+| 名称     | 类型  | 描述                                                                                                    |
+|--------|-----|-------------------------------------------------------------------------------------------------------|
+| symbol | str | symbol='全部'; 默认返回所有数据; choice of {'全部', '股票型', '混合型', '债券型', '指数型', 'QDII', 'ETF联接', 'LOF', '场内交易基金'} |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| 序号      | str   | Y        | -  |
-| 基金代码      | str   | Y        | -  |
-| 基金名称      | str   | Y        | -   |
-| 交易日-估算数据-估算值      | float   | Y        | -   |
-| 交易日-估算数据-估算增长率      |  str  | Y        | -   |
-| 交易日-公布数据-单位净值      | float   | Y        | -   |
-| 交易日-公布数据-日增长率      | str   | Y        | -   |
-| 估算偏差      | str   | Y        | -   |
-| 交易日-单位净值      | str   | Y        | -   |
+| 名称             | 类型    | 描述  |
+|----------------|-------|-----|
+| 序号             | str   | -   |
+| 基金代码           | str   | -   |
+| 基金名称           | str   | -   |
+| 交易日-估算数据-估算值   | float | -   |
+| 交易日-估算数据-估算增长率 | str   | -   |
+| 交易日-公布数据-单位净值  | float | -   |
+| 交易日-公布数据-日增长率  | str   | -   |
+| 估算偏差           | str   | -   |
+| 交易日-单位净值       | str   | -   |
 
 接口示例
 
 ```python
 import akshare as ak
-fund_em_value_estimation_df = ak.fund_em_value_estimation(symbol="混合型")
-print(fund_em_value_estimation_df)
+
+fund_value_estimation_em_df = ak.fund_value_estimation_em(symbol="混合型")
+print(fund_value_estimation_em_df)
 ```
 
 数据示例
@@ -1489,9 +1562,9 @@ print(fund_em_value_estimation_df)
 
 输入参数
 
-| 名称   | 类型 |描述 |
-| -------- | ---- |  --- |
-| symbol | str|   symbol="LOF基金"; choice of {"封闭式基金", "ETF基金", "LOF基金"} |
+| 名称     | 类型  | 描述                                                    |
+|--------|-----|-------------------------------------------------------|
+| symbol | str | symbol="LOF基金"; choice of {"封闭式基金", "ETF基金", "LOF基金"} |
 
 输出参数
 
@@ -1546,25 +1619,26 @@ print(fund_etf_category_sina_df)
 
 输入参数
 
-| 名称   | 类型 |  描述 |
-| -------- | ---- |  --- |
-| symbol | str|   symbol="sz169103"; 基金列表可以通过 **ak.fund_etf_category_sina(symbol="LOF基金")** 可选参数为: 封闭式基金, ETF基金, LOF基金 查询 |
+| 名称     | 类型  | 描述                                                                                                      |
+|--------|-----|---------------------------------------------------------------------------------------------------------|
+| symbol | str | symbol="sz169103"; 基金列表可以通过 **ak.fund_etf_category_sina(symbol="LOF基金")** 可选参数为: 封闭式基金, ETF基金, LOF基金 查询 |
 
 输出参数
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| date      | object   |  -  |
-| open      | float64   |  -   |
-| high      | float64   |  -   |
-| low      |  float64  |-   |
-| close      | float64   |  -   |
-| volume      | int64   |  注意单位: 手   |
+| 名称     | 类型      | 描述      |
+|--------|---------|---------|
+| date   | object  | -       |
+| open   | float64 | -       |
+| high   | float64 | -       |
+| low    | float64 | -       |
+| close  | float64 | -       |
+| volume | int64   | 注意单位: 手 |
 
 接口示例
 
 ```python
 import akshare as ak
+
 fund_etf_hist_sina_df = ak.fund_etf_hist_sina(symbol="sz169103")
 print(fund_etf_hist_sina_df)
 ```
@@ -1594,39 +1668,40 @@ print(fund_etf_hist_sina_df)
 
 描述: 天天基金网-基金档案-投资组合-基金持仓
 
-限量: 单次返回指定 code 和 year 的所有持仓数据
+限量: 单次返回指定 symbol 和 date 的所有持仓数据
 
 输入参数
 
-| 名称   | 类型 | 描述 |
-| -------- | ---- |  --- |
-| code | str|   code="000001"; 基金代码, 可以通过调用 **fund_em_fund_name** 接口获取 |
-| year | str|   year="2020"; 指定年份 |
+| 名称     | 类型  | 描述                                                       |
+|--------|-----|----------------------------------------------------------|
+| symbol | str | symbol="000001"; 基金代码, 可以通过调用 **ak.fund_name_em()** 接口获取 |
+| date   | str | date="2020"; 指定年份                                        |
 
 输出参数
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| 序号      | int64   |  -  |
-| 股票代码      | object   |  -   |
-| 股票名称      | object   |  -   |
-| 占净值比例      |  float64  |  注意单位: %   |
-| 持股数      | float64   | 注意单位: 万股   |
-| 持仓市值      | float64   |  注意单位: 万元   |
-| 季度      | object   | -  |
+| 名称    | 类型      | 描述       |
+|-------|---------|----------|
+| 序号    | int64   | -        |
+| 股票代码  | object  | -        |
+| 股票名称  | object  | -        |
+| 占净值比例 | float64 | 注意单位: %  |
+| 持股数   | float64 | 注意单位: 万股 |
+| 持仓市值  | float64 | 注意单位: 万元 |
+| 季度    | object  | -        |
 
 接口示例
 
 ```python
 import akshare as ak
-fund_portfolio_hold_em_df = ak.fund_portfolio_hold_em(code="000001", year="2020")
+
+fund_portfolio_hold_em_df = ak.fund_portfolio_hold_em(symbol="000001", date="2020")
 print(fund_portfolio_hold_em_df)
 ```
 
 数据示例
 
 ```
-     序号    股票代码  股票名称 占净值比例      持股数      持仓市值              季度
+     序号    股票代码  股票名称 占净值比例      持股数      持仓市值      季度
 0     1  601318  中国平安  6.04   333.75  29029.80  2020年4季度股票投资明细
 1     2  002127  南极电商  5.90  2074.47  28378.78  2020年4季度股票投资明细
 2     3  000961  中南建设  5.30  2889.73  25516.32  2020年4季度股票投资明细
@@ -1640,6 +1715,229 @@ print(fund_portfolio_hold_em_df)
 155  10  603806   福斯特  1.63   175.98   7165.78  2020年1季度股票投资明细
 ```
 
+### 债券持仓
+
+接口: fund_portfolio_bond_hold_em
+
+目标地址: http://fundf10.eastmoney.com/ccmx_000001.html
+
+描述: 天天基金网-基金档案-投资组合-债券持仓
+
+限量: 单次返回指定 symbol 和 date 的所有持仓数据
+
+输入参数
+
+| 名称     | 类型  | 描述                                                       |
+|--------|-----|----------------------------------------------------------|
+| symbol | str | symbol="000001"; 基金代码, 可以通过调用 **ak.fund_name_em()** 接口获取 |
+| date   | str | date="2021"; 指定年份                                        |
+
+输出参数
+
+| 名称    | 类型      | 描述       |
+|-------|---------|----------|
+| 序号    | int64   | -        |
+| 债券代码  | object  | -        |
+| 债券名称  | object  | -        |
+| 占净值比例 | float64 | 注意单位: %  |
+| 持仓市值  | float64 | 注意单位: 万元 |
+| 季度    | object  | -        |
+
+接口示例
+
+```python
+import akshare as ak
+
+fund_portfolio_bond_hold_em_df = ak.fund_portfolio_bond_hold_em(symbol="000001", date="2021")
+print(fund_portfolio_bond_hold_em_df)
+```
+
+数据示例
+
+```
+    序号   债券代码       债券名称  占净值比例   持仓市值       季度
+0    1     200207       20国开07   3.28  12100.80  2021年4季度债券投资明细
+1    2     190308       19进出08   3.01  11077.00  2021年4季度债券投资明细
+2    3  101564021  15华能集MTN002   2.80  10304.00  2021年4季度债券投资明细
+3    4     200312       20进出12   2.72  10035.00  2021年4季度债券投资明细
+4    5     200302       20进出02   2.71   9998.00  2021年4季度债券投资明细
+5    6     123107         温氏转债   0.49   1796.07  2021年4季度债券投资明细
+6    7     128113         比音转债   0.37   1354.46  2021年4季度债券投资明细
+7    8     113582         火炬转债   0.35   1295.03  2021年4季度债券投资明细
+8    9     123114         三角转债   0.17    610.91  2021年4季度债券投资明细
+9   10     113563         柳药转债   0.05    194.07  2021年4季度债券投资明细
+10  11     123117         健帆转债   0.04    131.21  2021年4季度债券投资明细
+11  12     128134         鸿路转债   0.02     85.00  2021年4季度债券投资明细
+12  13     200207       20国开07   3.11  12072.00  2021年3季度债券投资明细
+13  14     190308       19进出08   2.86  11088.00  2021年3季度债券投资明细
+14  15  101564021  15华能集MTN002   2.62  10173.00  2021年3季度债券投资明细
+15  16     200312       20进出12   2.59  10047.00  2021年3季度债券投资明细
+16  17     200302       20进出02   2.57   9983.00  2021年3季度债券投资明细
+17  18     128113         比音转债   0.34   1320.19  2021年3季度债券投资明细
+18  19     113563         柳药转债   0.05    175.48  2021年3季度债券投资明细
+19  20     128134         鸿路转债   0.02     72.00  2021年3季度债券投资明细
+20  21     200207       20国开07   2.72  12033.60  2021年2季度债券投资明细
+21  22     190308       19进出08   2.50  11074.80  2021年2季度债券投资明细
+22  23  101564021  15华能集MTN002   2.28  10089.00  2021年2季度债券投资明细
+23  24     200312       20进出12   2.27  10040.00  2021年2季度债券投资明细
+24  25     200302       20进出02   2.25   9967.00  2021年2季度债券投资明细
+25  26     128113         比音转债   0.28   1245.90  2021年2季度债券投资明细
+26  27     113563         柳药转债   0.04    179.29  2021年2季度债券投资明细
+27  28     128134         鸿路转债   0.02     76.56  2021年2季度债券投资明细
+28  29     180208       18国开08   3.99  17027.20  2021年1季度债券投资明细
+29  30     200207       20国开07   2.80  11966.40  2021年1季度债券投资明细
+30  31     190308       19进出08   2.59  11042.90  2021年1季度债券投资明细
+31  32  101564021  15华能集MTN002   2.36  10079.00  2021年1季度债券投资明细
+32  33     200312       20进出12   2.34  10007.00  2021年1季度债券投资明细
+33  34     128113         比音转债   0.23    987.33  2021年1季度债券投资明细
+34  35     113563         柳药转债   0.04    182.08  2021年1季度债券投资明细
+35  36     123058         欣旺转债   0.00     14.11  2021年1季度债券投资明细
+```
+
+### 行业配置
+
+接口: fund_portfolio_industry_allocation_em
+
+目标地址: http://fundf10.eastmoney.com/hytz_000001.html
+
+描述: 天天基金网-基金档案-投资组合-行业配置
+
+限量: 单次返回指定 symbol 和 date 的所有持仓数据
+
+输入参数
+
+| 名称     | 类型  | 描述                                                       |
+|--------|-----|----------------------------------------------------------|
+| symbol | str | symbol="000001"; 基金代码, 可以通过调用 **ak.fund_name_em()** 接口获取 |
+| date   | str | date="2021"; 指定年份                                        |
+
+输出参数
+
+| 名称    | 类型      | 描述       |
+|-------|---------|----------|
+| 序号    | int64   | -        |
+| 行业类别  | object  | -        |
+| 占净值比例 | float64 | 注意单位: %  |
+| 市值    | float64 | 注意单位: 万元 |
+| 截止时间  | object  | -        |
+
+接口示例
+
+```python
+import akshare as ak
+
+fund_portfolio_industry_allocation_em_df = ak.fund_portfolio_industry_allocation_em(symbol="000001", date="2021")
+print(fund_portfolio_industry_allocation_em_df)
+```
+
+数据示例
+
+```
+    序号              行业类别  占净值比例     市值      截止时间
+0    1               制造业  56.16  207001.896109  2021-12-31
+1    2        科学研究和技术服务业   6.24   23005.294619  2021-12-31
+2    3   信息传输、软件和信息技术服务业   1.73    6369.217203  2021-12-31
+3    4           卫生和社会工作   1.66    6107.257212  2021-12-31
+4    5  电力、热力、燃气及水生产和供应业   0.74    2744.300000  2021-12-31
+5    6          农、林、牧、渔业   0.72    2643.820200  2021-12-31
+6    7            批发和零售业   0.53    1968.759111  2021-12-31
+7    8     水利、环境和公共设施管理业   0.00       4.083939  2021-12-31
+8    9               建筑业   0.00       1.151999  2021-12-31
+9   10         文化、体育和娱乐业   0.00       0.841464  2021-12-31
+10  11            住宿和餐饮业   0.00       0.460800  2021-12-31
+11  12               制造业  55.51  215537.984424  2021-09-30
+12  13        科学研究和技术服务业   8.44   32764.688647  2021-09-30
+13  14           卫生和社会工作   3.29   12762.646382  2021-09-30
+14  15          租赁和商务服务业   2.24    8691.800000  2021-09-30
+15  16            批发和零售业   1.13    4368.689394  2021-09-30
+16  17     水利、环境和公共设施管理业   0.00       3.348558  2021-09-30
+17  18               建筑业   0.00       2.018339  2021-09-30
+18  19   信息传输、软件和信息技术服务业   0.00       1.999283  2021-09-30
+19  20          农、林、牧、渔业   0.00       1.811682  2021-09-30
+20  21         文化、体育和娱乐业   0.00       0.392522  2021-09-30
+21  22            住宿和餐饮业   0.00       0.334512  2021-09-30
+22  23               制造业  54.59  241792.196887  2021-06-30
+23  24        科学研究和技术服务业   6.66   29480.146982  2021-06-30
+24  25           卫生和社会工作   6.02   26670.725408  2021-06-30
+25  26            批发和零售业   3.36   14866.472191  2021-06-30
+26  27          租赁和商务服务业   3.03   13403.793250  2021-06-30
+27  28         文化、体育和娱乐业   1.66    7366.405200  2021-06-30
+28  29                教育   1.10    4863.964508  2021-06-30
+29  30   信息传输、软件和信息技术服务业   0.00       5.968407  2021-06-30
+30  31     水利、环境和公共设施管理业   0.00       4.443833  2021-06-30
+31  32               建筑业   0.00       2.537137  2021-06-30
+32  33  电力、热力、燃气及水生产和供应业   0.00       1.302039  2021-06-30
+33  34          农、林、牧、渔业   0.00       1.129028  2021-06-30
+34  35               制造业  50.81  216985.969222  2021-03-31
+35  36        科学研究和技术服务业   4.69   20049.634515  2021-03-31
+36  37           卫生和社会工作   3.62   15460.614975  2021-03-31
+37  38          租赁和商务服务业   2.68   11447.190400  2021-03-31
+38  39                教育   2.65   11317.705965  2021-03-31
+39  40            住宿和餐饮业   2.08    8888.724600  2021-03-31
+40  41         文化、体育和娱乐业   1.46    6241.041840  2021-03-31
+41  42            批发和零售业   1.38    5891.497222  2021-03-31
+42  43               金融业   0.03     118.342593  2021-03-31
+43  44     水利、环境和公共设施管理业   0.00       3.339202  2021-03-31
+44  45   信息传输、软件和信息技术服务业   0.00       3.233063  2021-03-31
+45  46  电力、热力、燃气及水生产和供应业   0.00       2.403612  2021-03-31
+46  47              房地产业   0.00       1.020030  2021-03-31
+```
+
+### 重大变动
+
+接口: fund_portfolio_change_em
+
+目标地址: http://fundf10.eastmoney.com/ccbd_000001.html
+
+描述: 天天基金网-基金档案-投资组合-重大变动
+
+限量: 单次返回指定 symbol、indicator 和 date 的所有重大变动数据
+
+输入参数
+
+| 名称        | 类型  | 描述                                                       |
+|-----------|-----|----------------------------------------------------------|
+| symbol    | str | symbol="003567"; 基金代码, 可以通过调用 **ak.fund_name_em()** 接口获取 |
+| indicator | str | indicator="累计买入"; choice of {"累计买入", "累计卖出"}             |
+| date      | str | date="2020"; 指定年份                                        |
+
+输出参数
+
+| 名称          | 类型      | 描述       |
+|-------------|---------|----------|
+| 序号          | int64   | -        |
+| 股票代码        | object  | -        |
+| 股票名称        | object  | -        |
+| 本期累计买入金额    | float64 | 注意单位: 万元 |
+| 占期初基金资产净值比例 | float64 | 注意单位: %  |
+| 季度          | object  | -        |
+
+接口示例
+
+```python
+import akshare as ak
+
+fund_portfolio_change_em_df = ak.fund_portfolio_change_em(symbol="003567", indicator="累计买入", year="2020")
+print(fund_portfolio_change_em_df)
+```
+
+数据示例
+
+```
+      序号 股票代码 股票名称  本期累计买入金额  占期初基金资产净值比例         季度
+0      1  603026  石大胜华   1029.76        19.83  2020年4季度累计买入股票明细
+1      2  300041  回天新材    699.23        13.46  2020年4季度累计买入股票明细
+2      3  688051  佳华科技    668.38        12.87  2020年4季度累计买入股票明细
+3      4  300769  德方纳米    667.30        12.85  2020年4季度累计买入股票明细
+4      5  300390  天华超净    616.45        11.87  2020年4季度累计买入股票明细
+..   ...     ...   ...       ...          ...               ...
+218  219  000338  潍柴动力    107.57         2.07  2020年2季度累计买入股票明细
+219  220  603708   家家悦    107.42         2.07  2020年2季度累计买入股票明细
+220  221  300299  富春股份    105.70         2.04  2020年2季度累计买入股票明细
+221  222  000921  海信家电    105.44         2.03  2020年2季度累计买入股票明细
+222  223  600837  海通证券    105.46         2.03  2020年2季度累计买入股票明细
+```
+
 ### 基金评级
 
 #### 基金评级总汇
@@ -1648,35 +1946,36 @@ print(fund_portfolio_hold_em_df)
 
 目标地址: http://fund.eastmoney.com/data/fundrating.html
 
-描述: 获取天天基金网-基金评级-基金评级总汇
+描述: 天天基金网-基金评级-基金评级总汇
 
 限量: 单次返回所有基金评级数据
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述 |
-| -------- | ---- | ---- | --- |
-| - | -| -    |   - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| 代码      | str   | Y        | -  |
-| 简称      | str   | Y        | -   |
-| 基金经理      | str   | Y        | -   |
-| 基金公司      |  str  | Y        | -   |
-| 5星评级家数      | float   | Y        | -   |
-| 上海证券      | float   | Y        | -   |
-| 招商证券      | float   | Y        | -  |
-| 济安金信      | float   | Y        | -  |
-| 手续费      | str   | Y        | -  |
-| 类型      | str   | Y        | -  |
+| 名称     | 类型      | 描述  |
+|--------|---------|-----|
+| 代码     | object  | -   |
+| 简称     | object  | -   |
+| 基金经理   | object  | -   |
+| 基金公司   | object  | -   |
+| 5星评级家数 | int64   | -   |
+| 上海证券   | float64 | -   |
+| 招商证券   | float64 | -   |
+| 济安金信   | float64 | -   |
+| 手续费    | float64 | -   |
+| 类型     | object  | -   |
 
 接口示例
 
 ```python
 import akshare as ak
+
 fund_rating_all_df = ak.fund_rating_all()
 print(fund_rating_all_df)
 ```
@@ -1684,18 +1983,18 @@ print(fund_rating_all_df)
 数据示例
 
 ```
-          代码             简称     基金经理  基金公司 5星评级家数 上海证券 招商证券 济安金信    手续费    类型
-0     270007       广发大盘成长混合       苗宇    广发      0    4    3    4  0.15%   混合型
-1     270009         广发增强债券       谢军    广发      0    2    3    3  0.00%   债券型
-2     270010  广发沪深300ETF联接A       刘杰    广发      1         5       0.12%  联接基金
-3     270014          广发货币B  温秀娟,曾雪兰    广发      0                 0.00%   货币型
-4     270025      广发行业领先混合A       程琨    广发      0    5    1    1  0.15%   混合型
-      ...            ...      ...   ...    ...  ...  ...  ...    ...   ...
-5286  519683      交银双利债券A/B       唐赟    交银      0    2    2    1  0.08%   债券型
-5287  160630  鹏华中证国防指数(LOF)       陈龙    鹏华      0         3       0.12%  股票指数
-5288  001887      中欧价值智选混合E      袁维德    中欧      0              3  0.15%   混合型
-5289  005427   渤海汇金汇增利3个月定开   李杨,高延龙  渤海汇金      0                 0.80%  定开债券
-5290  005378     前海联合泓元定开债券   敬夏玺,张文  前海联合      0                 0.08%  定开债券
+        代码                  简称        基金经理  基金公司  ...  招商证券  济安金信   手续费     类型
+0     270007            广发大盘成长混合          苗宇    广发  ...   3.0   3.0  0.0015   混合型-灵活
+1     270009             广发增强债券C       张芊,方抗    广发  ...   3.0   2.0  0.0000  债券型-混合债
+2     270010       广发沪深300ETF联接A          刘杰    广发  ...   4.0   4.0  0.0012   指数型-股票
+3     270014               广发货币B         温秀娟    广发  ...   NaN   5.0  0.0000      货币型
+4     270025           广发行业领先混合A          程琨    广发  ...   3.0   3.0  0.0015   混合型-偏股
+      ...                 ...         ...   ...  ...   ...   ...     ...      ...
+7235  001725          汇添富高端制造股票A         赵鹏飞   汇添富  ...   4.0   3.0  0.0015      股票型
+7236  006666             华夏鼎康债券C          吴彬    华夏  ...   NaN   2.0  0.0000   债券型-长债
+7237  550008           信诚优胜精选混合A          王睿  中信保诚  ...   4.0   4.0  0.0015   混合型-偏股
+7238  501082  博时科创主题灵活配置混合(LOF)A  曾鹏,肖瑞瑾,黄继晨    博时  ...   NaN   1.0  0.0012   混合型-灵活
+7239  003858         前海开源周期优选混合C          刘宏  前海开源  ...   NaN   4.0  0.0015   混合型-灵活
 ```
 
 #### 上海证券评级
@@ -1961,7 +2260,7 @@ print(fund_manager_df)
 
 ### 新发基金
 
-接口: fund_em_new_found
+接口: fund_new_found_em
 
 目标地址: http://fund.eastmoney.com/data/xinfound.html
 
@@ -1996,8 +2295,8 @@ print(fund_manager_df)
 ```python
 import akshare as ak
 
-fund_em_new_found_df = ak.fund_em_new_found()
-print(fund_em_new_found_df)
+fund_new_found_em_df = ak.fund_new_found_em()
+print(fund_new_found_em_df)
 ```
 
 数据示例
@@ -2191,7 +2490,7 @@ print(fund_scale_structured_sina_df)
 
 #### 基金规模详情
 
-接口: fund_em_aum
+接口: fund_aum_em
 
 目标地址: http://fund.eastmoney.com/Company/lsgm.html
 
@@ -2222,8 +2521,8 @@ print(fund_scale_structured_sina_df)
 ```python
 import akshare as ak
 
-fund_em_aum_df = ak.fund_em_aum()
-print(fund_em_aum_df)
+fund_aum_em_df = ak.fund_aum_em()
+print(fund_aum_em_df)
 ```
 
 数据示例
@@ -2245,7 +2544,7 @@ print(fund_em_aum_df)
 
 #### 基金规模走势
 
-接口: fund_em_aum_trend
+接口: fund_aum_trend_em
 
 目标地址: http://fund.eastmoney.com/Company/default.html
 
@@ -2271,8 +2570,8 @@ print(fund_em_aum_df)
 ```python
 import akshare as ak
 
-fund_em_aum_trend_df = ak.fund_em_aum_trend()
-print(fund_em_aum_trend_df)
+fund_aum_trend_em_df = ak.fund_aum_trend_em()
+print(fund_aum_trend_em_df)
 ```
 
 数据示例
@@ -2304,7 +2603,7 @@ print(fund_em_aum_trend_df)
 
 #### 基金公司历年管理规模
 
-接口: fund_em_aum_hist
+接口: fund_aum_hist_em
 
 目标地址: http://fund.eastmoney.com/Company/lsgm.html
 
@@ -2337,8 +2636,8 @@ print(fund_em_aum_trend_df)
 ```python
 import akshare as ak
 
-fund_em_aum_hist_df = ak.fund_em_aum_hist(year="2020")
-print(fund_em_aum_hist_df)
+fund_aum_hist_em_df = ak.fund_aum_hist_em(year="2020")
+print(fund_aum_hist_em_df)
 ```
 
 数据示例

@@ -3,7 +3,7 @@
 ## 说明
 
 AKShare HTTP 版本的部署主要依赖 AKTools、AKShare、FastAPI、Uvicorn 等开源 Python 库，部署的核心程序在 AKTools 中。
-感谢给 [AKTools 项目](https://github.com/akfamily/aktools) 点 Star，您的支持是持续开发最大的动力！
+非常感谢给 [AKTools 项目](https://github.com/akfamily/aktools) 点 Star，您的支持是我们持续开发最大的动力！
 
 ## 部署
 
@@ -21,4 +21,4 @@ python -m aktools
 
 ### 使用文档
 
-[参见项目 AKTools 项目文档](https://aktools.readthedocs.io/)
+[参见 AKTools 项目文档](https://aktools.readthedocs.io/)

@@ -10,7 +10,9 @@ import requests
 
 
 def stock_zh_index_hist_csindex(
-    symbol: str = "H30374", start_date: str = "20160101", end_date: str = "20211015"
+    symbol: str = "H30374",
+    start_date: str = "20160101",
+    end_date: str = "20211015",
 ) -> pd.DataFrame:
     """
     中证指数-具体指数-历史行情数据
@@ -34,6 +36,7 @@ def stock_zh_index_hist_csindex(
     r = requests.get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
+    del temp_df["peg"]
     temp_df.columns = [
         "日期",
         "指数代码",
@@ -119,16 +122,16 @@ def index_value_name_funddb() -> pd.DataFrame:
         "-",
         "指数名称",
         "指数代码",
+        "最新PE",
+        "最新PB",
+        "PE分位",
+        "PB分位",
+        "股息率",
         "-",
         "-",
         "-",
-        "-",
-        "-",
-        "-",
-        "-",
-        "-",
-        "-",
-        "-",
+        "更新时间",
+        "股息率分位",
         "-",
         "-",
         "-",
@@ -151,11 +154,24 @@ def index_value_name_funddb() -> pd.DataFrame:
     temp_df = temp_df[
         [
             "指数名称",
+            "最新PE",
+            "PE分位",
+            "最新PB",
+            "PB分位",
+            "股息率",
+            "股息率分位",
             "指数代码",
             "指数开始时间",
+            "更新时间",
         ]
     ]
     temp_df["指数开始时间"] = pd.to_datetime(temp_df["指数开始时间"]).dt.date
+    temp_df['最新PE'] = pd.to_numeric(temp_df['最新PE'])
+    temp_df['PE分位'] = pd.to_numeric(temp_df['PE分位'])
+    temp_df['最新PB'] = pd.to_numeric(temp_df['最新PB'])
+    temp_df['PB分位'] = pd.to_numeric(temp_df['PB分位'])
+    temp_df['股息率'] = pd.to_numeric(temp_df['股息率'])
+    temp_df['股息率分位'] = pd.to_numeric(temp_df['股息率分位'])
     return temp_df
 
 
@@ -179,7 +195,10 @@ def index_value_hist_funddb(
     }
     index_value_name_funddb_df = index_value_name_funddb()
     name_code_map = dict(
-        zip(index_value_name_funddb_df["指数名称"], index_value_name_funddb_df["指数代码"])
+        zip(
+            index_value_name_funddb_df["指数名称"],
+            index_value_name_funddb_df["指数代码"],
+        )
     )
     url = "https://api.jiucaishuo.com/v2/guzhi/newtubiaolinedata"
     payload = {
@@ -196,7 +215,8 @@ def index_value_hist_funddb(
     data_json = r.json()
     big_df = pd.DataFrame()
     temp_df = pd.DataFrame(
-        data_json["data"]["tubiao"]["series"][0]["data"], columns=["timestamp", "value"]
+        data_json["data"]["tubiao"]["series"][0]["data"],
+        columns=["timestamp", "value"],
     )
     big_df["日期"] = (
         pd.to_datetime(temp_df["timestamp"], unit="ms", utc=True)
@@ -224,12 +244,19 @@ def index_value_hist_funddb(
 
 if __name__ == "__main__":
     stock_zh_index_hist_csindex_df = stock_zh_index_hist_csindex(
-        symbol="H30374", start_date="20100101", end_date="20211125"
+        symbol="000859", start_date="20220410", end_date="20220709"
     )
     print(stock_zh_index_hist_csindex_df)
 
-    stock_zh_index_value_csindex_df = stock_zh_index_value_csindex(symbol="H30374")
+    stock_zh_index_value_csindex_df = stock_zh_index_value_csindex(
+        symbol="H30374"
+    )
     print(stock_zh_index_value_csindex_df)
 
-    index_value_hist_funddb_df = index_value_hist_funddb(symbol="中证能源", indicator="股息率")
+    index_value_hist_funddb_df = index_value_hist_funddb(
+        symbol="大盘成长", indicator="市盈率"
+    )
     print(index_value_hist_funddb_df)
+
+    index_value_name_funddb_df = index_value_name_funddb()
+    print(index_value_name_funddb_df)

@@ -51,8 +51,8 @@ AKShare 由于使用 [PyMiniRacer](https://blog.sqreen.com/embedding-javascript-
 
 ### 解决方案
 
-本次的解决方案是提供编译好的文件供大家下载使用：[libmini_racer.dylib](https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/akshare/software/pyminiracer/libmini_racer.dylib) ， 
-只需要把该文件放在提示的路径下即可！
+本次的解决方案是提供编译好的文件供大家下载使用：[libmini_racer.dylib](https://jfds-1252952517.cos.ap-chengdu.myqcloud.com/akshare/software/pyminiracer/libmini_racer.dylib) ，
+只需要把该文件下载到本地，然后存放在报错提示的路径即可！
 
 ### 扩展阅读
 
@@ -102,44 +102,37 @@ install.packages("reticulate")
 
 ```
 library(reticulate)
-use_python("/usr/local/bin/python")
+use_python("/usr/local/bin/python")  # 默认使用本地的 Python, 如果需要使用虚拟环境的 Pyhton, 请参考 reticulate 的提示
 ```
 
-调用本地的 Python 程序，其中 usr 需要替换为本地电脑的用户名。
+调用本地的 Python 程序，其中 usr 需要替换为本地计算机的用户名。
 
 最后展示一段演示代码，此代码在 R 语言中通过 reticulate 包来调用 [AKShare](https://github.com/akfamily/akshare) 获取数据：
 
 ```
 library(reticulate)  # 导入 reticulate 包
-use_python("/king/local/bin/python")  # 其中的 king 为本地电脑用户名
+use_python("/king/local/bin/python")  # 其中的 king 为本地计算机用户名
 # use_condaenv(condaenv="ak_test", required = TRUE)  # 也可以使用 conda 创建的虚拟环境，其中的 ak_test 为虚拟环境名称
 ak <- import("akshare")  # 类似于 import akshare as ak
-stock_df <- ak$stock_em_yysj(date="20200331")  # 类似于 ak.stock_em_yysj(date="20200331")
-print(stock_df)  # 查看数据
+stock_df <- ak$stock_zh_a_hist()  # 类似于 ak.stock_zh_a_hist()
+head(stock_df)  # 查看数据
 ```
 
 ```
-   scode    sname  trademarket          reportdate              frdate
-1 600396 金山股份   上交所主板 2020-03-31T00:00:00 2020-04-08T00:00:00
-2 002913   奥士康 深交所中小板 2020-03-31T00:00:00 2020-04-08T00:00:00
-3 002007 华兰生物 深交所中小板 2020-03-31T00:00:00 2020-04-08T00:00:00
-4 002838 道恩股份 深交所中小板 2020-03-31T00:00:00 2020-04-09T00:00:00
-5 603186 华正新材   上交所主板 2020-03-31T00:00:00 2020-04-09T00:00:00
-6 300208 青岛中程 深交所创业板 2020-03-31T00:00:00 2020-04-09T00:00:00
-               fcdate scdate tcdate              radate securitytypecode
-1                   -      -      - 2020-04-08T00:00:00        058001001
-2                   -      -      - 2020-04-08T00:00:00        058001001
-3                   -      -      - 2020-04-08T00:00:00        058001001
-4                   -      -      - 2020-04-09T00:00:00        058001001
-5                   -      -      - 2020-04-09T00:00:00        058001001
-6 2020-04-16T00:00:00      -      - 2020-04-16T00:00:00        058001001
-  trademarketcode
-1    069001001001
-2    069001002003
-3    069001002003
-4    069001002003
-5    069001001001
-6    069001002002
+        日期  开盘   收盘  最高   最低     成交量 成交额  振幅  涨跌幅 涨跌额
+1 1991-04-03 49.00 49.00 49.00 49.00      1   5000    0  22.50   9.00
+2 1991-04-04 48.76 48.76 48.76 48.76      3  15000    0  -0.49  -0.24
+3 1991-04-05 48.52 48.52 48.52 48.52      2  10000    0  -0.49  -0.24
+4 1991-04-06 48.28 48.28 48.28 48.28      7  34000    0  -0.49  -0.24
+5 1991-04-08 48.04 48.04 48.04 48.04      2  10000    0  -0.50  -0.24
+6 1991-04-09 47.80 47.80 47.80 47.80      4  19000    0  -0.50  -0.24
+  换手率
+1      0
+2      0
+3      0
+4      0
+5      0
+6      0
 ```
 
 ## MATLAB 调用支持
@@ -173,7 +166,7 @@ pyenv
 如返回
 
 ```
-pe = 
+pe =
 
   PythonEnvironment - 属性:
 
@@ -201,7 +194,7 @@ py.akshare.stock_zh_a_hist
 如返回
 
 ```
-ans = 
+ans =
 
   Python DataFrame - 属性:
 
@@ -234,7 +227,7 @@ ans =
     7300  2021-11-08  17.62  17.42  17.81  ...  2.55  -1.25 -0.22  0.71
     7301  2021-11-09  17.48  17.53  17.65  ...  2.24   0.63  0.11  0.64
     7302  2021-11-10  17.46  17.40  17.47  ...  1.77  -0.74 -0.13  0.63
-    
+
     [7303 rows x 11 columns]
 ```
 
@@ -253,7 +246,7 @@ py.akshare.macro_cnbs
 如返回
 
 ```
-ans = 
+ans =
 
   Python DataFrame - 属性:
 
@@ -286,7 +279,7 @@ ans =
     103  2021-03  62.100000  161.400000  ...  267.800000  52.800000  62.300000
     104  2021-06  62.000000  158.800000  ...  265.400000  51.300000  61.700000
     105  2021-09  62.100000  157.200000  ...  264.800000  49.200000  61.900000
-    
+
     [106 rows x 9 columns]
 ```
 
@@ -304,7 +297,7 @@ py.akshare.stock_zh_a_hist("000001", "daily", "20170301", '20210907', "")
 如返回
 
 ```
-ans = 
+ans =
 
   Python DataFrame - 属性:
 
@@ -337,7 +330,7 @@ ans =
     1102  2021-09-03  18.50  18.04  18.50  ...  4.35 -1.96 -0.36  0.72
     1103  2021-09-06  17.93  18.45  18.60  ...  4.55  2.27  0.41  0.78
     1104  2021-09-07  18.60  19.24  19.56  ...  6.56  4.28  0.79  0.84
-    
+
     [1105 rows x 11 columns]
 ```
 

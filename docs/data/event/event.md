@@ -14,9 +14,9 @@
 
 输入参数
 
-| 名称     | 类型  | 描述                                                 |
-|--------|-----|----------------------------------------------------|
-| symbol | str | symbol="高风险等级地区"; choice of {"高风险等级地区", "中风险等级地区"} |
+| 名称     | 类型  | 描述                                                            |
+|--------|-----|---------------------------------------------------------------|
+| symbol | str | symbol="高风险等级地区"; choice of {"高风险等级地区", "中风险等级地区", "低风险等级地区"} |
 
 输出参数
 
@@ -43,25 +43,18 @@ print(covid_19_risk_area_df)
 数据示例
 
 ```
-  province city county    area_name communitys grade     report_date  number
-0      天津市  天津市    西青区  天津市 天津市 西青区  大寺镇宇泰家园C区   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    辛庄镇林锦花园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    辛庄镇林绣花园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    咸水沽镇丰达园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    辛庄镇鑫昱花园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    辛庄镇义佳花园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区   咸水沽镇龙湖紫宸   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    咸水沽镇同泽园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区    辛庄镇上悦花园   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区     辛庄镇鑫旺里   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区   辛庄镇首创星景苑   高风险  2022-01-20 11时      18
-1      天津市  天津市    津南区  天津市 天津市 津南区     双港镇欣桃园   高风险  2022-01-20 11时      18
-2      河南省  安阳市    汤阴县  河南省 安阳市 汤阴县       育才中学   高风险  2022-01-20 11时      18
-2      河南省  安阳市    汤阴县  河南省 安阳市 汤阴县      古贤镇全域   高风险  2022-01-20 11时      18
-3      河南省  许昌市    禹州市  河南省 许昌市 禹州市       夏都街道   高风险  2022-01-20 11时      18
-3      河南省  许昌市    禹州市  河南省 许昌市 禹州市    火龙镇：郭楼村   高风险  2022-01-20 11时      18
-3      河南省  许昌市    禹州市  河南省 许昌市 禹州市     梁北镇：郭村   高风险  2022-01-20 11时      18
-4      陕西省  西安市    雁塔区  陕西省 西安市 雁塔区      长延堡街道   高风险  2022-01-20 11时      18
+      province      city    county  ... grade     report_date number
+0          天津市       天津市       河东区  ...   高风险  2022-08-31 11时   1811
+1          天津市       天津市       河东区  ...   高风险  2022-08-31 11时   1811
+2          天津市       天津市       河东区  ...   高风险  2022-08-31 11时   1811
+3          天津市       天津市       河西区  ...   高风险  2022-08-31 11时   1811
+4          天津市       天津市       河西区  ...   高风险  2022-08-31 11时   1811
+        ...       ...       ...  ...   ...             ...    ...
+1806  新疆维吾尔自治区      塔城地区       乌苏市  ...   高风险  2022-08-31 11时   1811
+1807  新疆维吾尔自治区      塔城地区       乌苏市  ...   高风险  2022-08-31 11时   1811
+1808  新疆维吾尔自治区      塔城地区       乌苏市  ...   高风险  2022-08-31 11时   1811
+1809  新疆维吾尔自治区      塔城地区       乌苏市  ...   高风险  2022-08-31 11时   1811
+1810  新疆生产建设兵团  新疆生产建设兵团  新疆生产建设兵团  ...   高风险  2022-08-31 11时   1811
 ```
 
 #### COVID-19-网易
@@ -85,7 +78,7 @@ print(covid_19_risk_area_df)
 | 名称   | 类型     | 描述   |
 |------|--------|------|
 | info | object | 数据说明 |
-						
+
 接口示例-数据说明
 
 ```python
@@ -116,7 +109,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见: **数据示例-中国实时数据**  |
-						
+
 接口示例-中国实时数据
 
 ```python
@@ -135,11 +128,11 @@ heal             1390.0  67039.0     NaN
 dead               10.0   3204.0     NaN
 severe           -384.0   3226.0     NaN
                  ...      ...     ...
-suspectNote         NaN      NaN        
-healNote            NaN      NaN        
-deadNote            NaN      NaN        
-incrConfirmNote     NaN      NaN        
-incrSevereNote      NaN      NaN        
+suspectNote         NaN      NaN
+healNote            NaN      NaN
+deadNote            NaN      NaN
+incrConfirmNote     NaN      NaN
+incrSevereNote      NaN      NaN
 ```
 
 输入参数-中国历史时点数据
@@ -153,7 +146,7 @@ incrSevereNote      NaN      NaN
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-中国历史时点数据**  |
-						
+
 接口示例-中国历史时点数据
 
 ```python
@@ -190,7 +183,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-中国历史累计数据**  |
-						
+
 接口示例-中国历史累计数据
 
 ```python
@@ -227,7 +220,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-世界历史时点数据**  |
-						
+
 接口示例-世界历史时点数据
 
 ```python
@@ -264,7 +257,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-世界历史累计数据**  |
-						
+
 接口示例-世界历史累计数据
 
 ```python
@@ -301,7 +294,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-全球所有国家及地区时点数据**  |
-						
+
 接口示例-全球所有国家及地区时点数据
 
 ```python
@@ -338,7 +331,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-全球所有国家及地区累计数据**  |
-						
+
 接口示例-全球所有国家及地区累计数据
 
 ```python
@@ -375,7 +368,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-中国各地区时点数据**  |
-						
+
 接口示例-中国各地区时点数据
 
 ```python
@@ -412,7 +405,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-中国各地区累计数据**  |
-						
+
 接口示例-中国各地区累计数据
 
 ```python
@@ -449,7 +442,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-疫情学术进展**  |
-						
+
 接口示例-疫情学术进展
 
 ```python
@@ -486,7 +479,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-实时资讯新闻播报**  |
-						
+
 接口示例-实时资讯新闻播报
 
 ```python
@@ -523,7 +516,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-实时医院新闻播报**  |
-						
+
 接口示例-实时医院新闻播报
 
 ```python
@@ -560,7 +553,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-前沿知识**  |
-						
+
 接口示例-前沿知识
 
 ```python
@@ -590,7 +583,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-权威发布**  |
-						
+
 接口示例-权威发布
 
 ```python
@@ -627,7 +620,7 @@ print(covid_19_163_df)
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-境外输入疫情趋势**  |
-						
+
 接口示例-境外输入疫情趋势
 
 ```python
@@ -640,7 +633,7 @@ print(covid_19_163_df)
 
 ```
             境外输入新增确诊  境外输入累计确诊
-date                          
+date
 2020-01-20         0         0
 2020-01-21         0         0
 2020-01-22         0         0
@@ -665,7 +658,7 @@ date
 | 名称          | 类型 | 默认显示 | 描述           |
 | --------------- | ----- | -------- | ---------------- |
 | -      | -   | -        | 参见 **数据示例-境外输入疫情趋势**  |
-						
+
 接口示例-境外输入确诊病例来源
 
 ```python
@@ -1031,26 +1024,27 @@ print(covid_19_dxy_df)
 
 输入参数-实时播报
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="实时播报"|
+| 名称        | 类型  | 描述               |
+|-----------|-----|------------------|
+| indicator | str | indicator="实时播报" |
 
 输出参数-实时播报
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| bjh_na      | str   | Y        |-   |
-| eventDescription      | str   | Y        | 新闻描述  |
-| eventTime      | str   | Y        | 新闻时间  |
-| eventUrl      | str   | Y        | 链接  |
-| homepageUrl      | str   | Y        | 链接  |
-| item_avatar      | str   | Y        | -  |
-| siteName      | str   | Y        | 新闻来源  |
+| 名称               | 类型  | 描述   |
+|------------------|-----|------|
+| bjh_na           | str | -    |
+| eventDescription | str | 新闻描述 |
+| eventTime        | str | 新闻时间 |
+| eventUrl         | str | 链接   |
+| homepageUrl      | str | 链接   |
+| item_avatar      | str | -    |
+| siteName         | str | 新闻来源 |
 
 接口示例-实时播报
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="实时播报")
 print(covid_19_baidu_df)
 ```
@@ -1074,20 +1068,21 @@ print(covid_19_baidu_df)
 
 输入参数-中国分省份详情
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="中国分省份详情"|
+| 名称        | 类型  | 描述                  |
+|-----------|-----|---------------------|
+| indicator | str | indicator="中国分省份详情" |
 
 输出参数-中国分省份详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        |参见 **数据示例-中国分省份详情**   |
+| 名称  | 类型  | 描述                  |
+|-----|-----|---------------------|
+| -   | -   | 参见 **数据示例-中国分省份详情** |
 
 接口示例-中国分省份详情
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="中国分省份详情")
 print(covid_19_baidu_df)
 ```
@@ -1111,20 +1106,21 @@ print(covid_19_baidu_df)
 
 输入参数-中国分城市详情
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="中国分城市详情"|
+| 名称        | 类型  | 描述                  |
+|-----------|-----|---------------------|
+| indicator | str | indicator="中国分城市详情" |
 
 输出参数-中国分城市详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        |参见 **数据示例-中国分城市详情**   |
+| 名称  | 类型  | 描述                  |
+|-----|-----|---------------------|
+| -   | -   | 参见 **数据示例-中国分城市详情** |
 
 接口示例-中国分城市详情
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="中国分城市详情")
 print(covid_19_baidu_df)
 ```
@@ -1148,20 +1144,21 @@ print(covid_19_baidu_df)
 
 输入参数-国外分国详情
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="国外分国详情"|
+| 名称        | 类型  | 描述                 |
+|-----------|-----|--------------------|
+| indicator | str | indicator="国外分国详情" |
 
 输出参数-国外分国详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        |参见 **数据示例-国外分国详情**   |
+| 名称  | 类型  | 描述                 |
+|-----|-----|--------------------|
+| -   | -   | 参见 **数据示例-国外分国详情** |
 
 接口示例-国外分国详情
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="国外分国详情")
 print(covid_19_baidu_df)
 ```
@@ -1185,20 +1182,21 @@ print(covid_19_baidu_df)
 
 输入参数-国外分城市详情
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="国外分城市详情"|
+| 名称        | 类型  | 描述                  |
+|-----------|-----|---------------------|
+| indicator | str | indicator="国外分城市详情" |
 
 输出参数-国外分城市详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        |参见 **数据示例-国外分城市详情**   |
+| 名称  | 类型  | 描述                  |
+|-----|-----|---------------------|
+| -   | -   | 参见 **数据示例-国外分城市详情** |
 
 接口示例-国外分城市详情
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="国外分城市详情")
 print(covid_19_baidu_df)
 ```
@@ -1207,35 +1205,36 @@ print(covid_19_baidu_df)
 
 ```
     province  city confirmed died crued
-0         伊朗   德黑兰      2976           
-1         伊朗    吉兰       684           
-2         伊朗    库姆       888           
-3         伊朗  伊斯法罕       902           
-4         伊朗   法尔斯       232           
+0         伊朗   德黑兰      2976
+1         伊朗    吉兰       684
+2         伊朗    库姆       888
+3         伊朗  伊斯法罕       902
+4         伊朗   法尔斯       232
 ..       ...   ...       ...  ...   ...
-105       日本    广岛         1           
-106       日本    群马         5           
-107       日本    福岛         2           
-108       日本    佐贺         1           
-109       日本    长崎         1 
+105       日本    广岛         1
+106       日本    群马         5
+107       日本    福岛         2
+108       日本    佐贺         1
+109       日本    长崎         1
 ```
 
 输入参数-全球分洲详情
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="全球分洲详情"|
+| 名称        | 类型  | 描述                 |
+|-----------|-----|--------------------|
+| indicator | str | indicator="全球分洲详情" |
 
 输出参数-全球分洲详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        |参见 **数据示例-全球分洲详情**   |
+| 名称  | 类型  | 描述                 |
+|-----|-----|--------------------|
+| -   | -   | 参见 **数据示例-全球分洲详情** |
 
 接口示例-全球分洲详情
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="全球分洲详情")
 print(covid_19_baidu_df)
 ```
@@ -1255,20 +1254,21 @@ print(covid_19_baidu_df)
 
 输入参数-全球分洲国家详情
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| indicator | str | Y | indicator="全球分洲国家详情"|
+| 名称        | 类型  | 描述                   |
+|-----------|-----|----------------------|
+| indicator | str | indicator="全球分洲国家详情" |
 
 输出参数-全球分洲国家详情
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        |参见 **数据示例-全球分洲国家详情**   |
+| 名称  | 类型  | 描述                   |
+|-----|-----|----------------------|
+| -   | -   | 参见 **数据示例-全球分洲国家详情** |
 
 接口示例-全球分洲国家详情
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="全球分洲国家详情")
 print(covid_19_baidu_df)
 ```
@@ -1292,20 +1292,21 @@ print(covid_19_baidu_df)
 
 输入参数-国内新型肺炎最新动态
 
-| 名称   | 类型 |  描述     |
-| -------- | ---- |  --- |
-| indicator | str | indicator="国内新型肺炎最新动态"|
+| 名称        | 类型  | 描述                     |
+|-----------|-----|------------------------|
+| indicator | str | indicator="国内新型肺炎最新动态" |
 
 输出参数-国内新型肺炎最新动态
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| -      | -   | 参见 **数据示例-国内新型肺炎最新动态**   |
+| 名称  | 类型  | 描述                     |
+|-----|-----|------------------------|
+| -   | -   | 参见 **数据示例-国内新型肺炎最新动态** |
 
 接口示例-国内新型肺炎最新动态
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="国内新型肺炎最新动态")
 print(covid_19_baidu_df)
 ```
@@ -1357,20 +1358,21 @@ print(covid_19_baidu_df)
 
 输入参数-国外新型肺炎最新动态
 
-| 名称   | 类型 |  描述   |
-| -------- | ---- |  --- |
-| indicator | str |  indicator="国外新型肺炎最新动态"|
+| 名称        | 类型  | 描述                     |
+|-----------|-----|------------------------|
+| indicator | str | indicator="国外新型肺炎最新动态" |
 
 输出参数-国外新型肺炎最新动态
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| -      | -   | 参见 **数据示例-国外新型肺炎最新动态**   |
+| 名称  | 类型  | 描述                     |
+|-----|-----|------------------------|
+| -   | -   | 参见 **数据示例-国外新型肺炎最新动态** |
 
 接口示例-国外新型肺炎最新动态
 
 ```python
 import akshare as ak
+
 covid_19_baidu_df = ak.covid_19_baidu(indicator="国外新型肺炎最新动态")
 print(covid_19_baidu_df)
 ```
@@ -1433,24 +1435,25 @@ print(covid_19_baidu_df)
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| area | str | Y | area="乌鲁木齐市", 输入需要查询的省份或者城市, 都需要用全称, 比如: "浙江省", "乌鲁木齐市" |
-| indicator | str | Y | indicator="move_in", 返回迁入地详情, indicator="move_out", 返回迁出地详情 |
-| date | str | Y | date="20200201", 需要滞后一天 |
+| 名称        | 类型  | 描述                                                          |
+|-----------|-----|-------------------------------------------------------------|
+| area      | str | area="乌鲁木齐市", 输入需要查询的省份或者城市, 都需要用全称, 比如: "浙江省", "乌鲁木齐市"     |
+| indicator | str | indicator="move_in", 返回迁入地详情, indicator="move_out", 返回迁出地详情 |
+| date      | str | date="20200201", 需要滞后一天                                     |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| city_name      | 城市名称   | Y        |   |
-| province_name      | 所属省份   | Y        |   |
-| value      | str   | 迁徙规模, 比例        |   |
-			
+| 名称            | 类型   | 描述       |
+|---------------|------|----------|
+| city_name     | 城市名称 |          |
+| province_name | 所属省份 |          |
+| value         | str  | 迁徙规模, 比例 |
+
 接口示例
 
 ```python
 import akshare as ak
+
 migration_area_baidu_df = ak.migration_area_baidu(area="浙江省", indicator="move_in", date="20200201")
 print(migration_area_baidu_df)
 ```
@@ -1487,24 +1490,25 @@ print(migration_area_baidu_df)
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| area | str | Y | area="乌鲁木齐市", 输入需要查询的省份或者城市, 都需要用全称, 比如: "浙江省", "乌鲁木齐市" |
-| indicator | str | Y | indicator="move_in", 返回迁入地详情, indicator="move_out", 返回迁出地详情 |
-| start_date | str | Y | start_date="20190112", 一般不要变化 |
-| end_date | str | Y | end_date="20200201", 往后查询如 20200202 之后 |
+| 名称         | 类型  | 描述                                                          |
+|------------|-----|-------------------------------------------------------------|
+| area       | str | area="乌鲁木齐市", 输入需要查询的省份或者城市, 都需要用全称, 比如: "浙江省", "乌鲁木齐市"     |
+| indicator  | str | indicator="move_in", 返回迁入地详情, indicator="move_out", 返回迁出地详情 |
+| start_date | str | start_date="20190112", 一般不要变化                               |
+| end_date   | str | end_date="20200201", 往后查询如 20200202 之后                      |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| 日期      | 索引   | Y        | 去年和今年的日期  |
-| 迁徙规模指数      | str   | Y        |  定义参见百度, 同 covid_19_baidu 定义 |
-			
+| 名称     | 类型  | 描述                          |
+|--------|-----|-----------------------------|
+| 日期     | 索引  | 去年和今年的日期                    |
+| 迁徙规模指数 | str | 定义参见百度, 同 covid_19_baidu 定义 |
+
 接口示例
 
 ```python
 import akshare as ak
+
 migration_scale_baidu_df = ak.migration_scale_baidu(area="浙江省", indicator="move_out", start_date="20190112", end_date="20200201")
 print(migration_scale_baidu_df)
 ```
@@ -1532,26 +1536,27 @@ print(migration_scale_baidu_df)
 
 目标地址: https://rl.inews.qq.com/h5/trip?from=newsapp&ADTAG=tgi.wx.share.message
 
-描述: 获取新型肺炎确诊患者-相同行程查询工具中所有行程数据
+描述: 新型肺炎确诊患者-相同行程查询工具中所有行程数据
 
 限量: 单次返回新型肺炎确诊患者-相同行程查询工具中所有行程数据
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| - | - | - | - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| -      | -   | -        | 字段过多, 不单列  |
-			
+| 名称  | 类型  | 描述        |
+|-----|-----|-----------|
+| -   | -   | 字段过多, 不单列 |
+
 接口示例
 
 ```python
 import akshare as ak
+
 covid_19_trip_df = ak.covid_19_trip()
 print(covid_19_trip_df)
 ```
@@ -1588,33 +1593,34 @@ print(covid_19_trip_df)
 
 目标地址: https://news.qq.com/hdh5/hebeicomeon.htm#/?ADTAG=yqi
 
-描述: 获取腾讯新闻-疫情-病患轨迹的数据
+描述: 腾讯新闻-疫情-病患轨迹的数据
 
 限量: 单次返回所有省份的数据
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| - | - | - | - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| 地址      | str  | Y        | -  |
-| 城市      | str  | Y        | -  |
-| 区      | str  | Y        | -  |
-| 省份      | str  | Y        | -  |
-| 标题      | str  | Y        | -  |
-| 更新时间      | str  | Y        | -  |
-| 风险等级      | str  | Y        | -  |
-| 统计时间      | str  | Y        | -  |
+| 名称   | 类型  | 描述  |
+|------|-----|-----|
+| 地址   | str | -   |
+| 城市   | str | -   |
+| 区    | str | -   |
+| 省份   | str | -   |
+| 标题   | str | -   |
+| 更新时间 | str | -   |
+| 风险等级 | str | -   |
+| 统计时间 | str | -   |
 
 接口示例
 
 ```python
 import akshare as ak
+
 covid_19_trace_df = ak.covid_19_trace()
 print(covid_19_trace_df)
 ```
@@ -1648,30 +1654,31 @@ print(covid_19_trace_df)
 
 输入参数-covid_19_hist_city
 
-| 名称   | 类型 |  描述      |
-| -------- | ---- |  --- |
+| 名称   | 类型  | 描述         |
+|------|-----|------------|
 | city | str | city="武汉市" |
 
 输出参数-covid_19_hist_city
 
-| 名称          | 类型 |  描述           |
-| --------------- | ----- |  ---------------- |
-| date | str |  时间（天） |
-| country | str |  国家 |
-| countryCode | float | 国家代码 |
-| province | float |  省 |
-| provinceCode | float |  省代码 |
-| city | float |  市 |
-| cityCode | float |  市代码 |
-| confirmed | str |  确诊人数 |
-| suspected | str |  疑似人数 |
-| cured | str | 治愈人数 |
-| dead | str |  死亡人数 |
-			
+| 名称           | 类型    | 描述    |
+|--------------|-------|-------|
+| date         | str   | 时间（天） |
+| country      | str   | 国家    |
+| countryCode  | float | 国家代码  |
+| province     | float | 省     |
+| provinceCode | float | 省代码   |
+| city         | float | 市     |
+| cityCode     | float | 市代码   |
+| confirmed    | str   | 确诊人数  |
+| suspected    | str   | 疑似人数  |
+| cured        | str   | 治愈人数  |
+| dead         | str   | 死亡人数  |
+
 接口示例-covid_19_hist_city
 
 ```python
 import akshare as ak
+
 covid_19_hist_city_df = ak.covid_19_hist_city(city="武汉市")
 print(covid_19_hist_city_df)
 ```
@@ -1695,30 +1702,31 @@ print(covid_19_hist_city_df)
 
 输入参数-covid_19_hist_province
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| province | str | Y | province="湖北省" |
+| 名称       | 类型  | 描述             |
+|----------|-----|----------------|
+| province | str | province="湖北省" |
 
 输出参数-covid_19_hist_province
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ---------------- |
-| date | str | Y | 时间（天） |
-| country | str | Y | 国家 |
-| countryCode | float | Y | 国家代码 |
-| province | float | Y | 省 |
-| provinceCode | float | Y | 省代码 |
-| city | float | Y | 市 |
-| cityCode | float | Y | 市代码 |
-| confirmed | str | Y | 确诊人数 |
-| suspected | str | Y | 疑似人数 |
-| cured | str | Y | 治愈人数 |
-| dead | str | Y | 死亡人数 |
-			
+| 名称           | 类型    | 描述    |
+|--------------|-------|-------|
+| date         | str   | 时间（天） |
+| country      | str   | 国家    |
+| countryCode  | float | 国家代码  |
+| province     | float | 省     |
+| provinceCode | float | 省代码   |
+| city         | float | 市     |
+| cityCode     | float | 市代码   |
+| confirmed    | str   | 确诊人数  |
+| suspected    | str   | 疑似人数  |
+| cured        | str   | 治愈人数  |
+| dead         | str   | 死亡人数  |
+
 接口示例-covid_19_hist_province
 
 ```python
 import akshare as ak
+
 covid_19_hist_province_df = ak.covid_19_hist_province(province="湖北省")
 print(covid_19_hist_province_df)
 ```
@@ -1768,7 +1776,7 @@ print(covid_19_hist_province_df)
 | Confirmed | float | Y |  the number of confirmed cases. For Hubei Province: from Feb 13 (GMT +8), we report both clinically diagnosed and lab-confirmed cases. For lab-confirmed cases only (Before Feb 17), please refer to who_covid_19_situation_reports. For Italy, diagnosis standard might be changed since Feb 27 to "slow the growth of new case numbers." |
 | Deaths | float | Y | the number of deaths. |
 | Recovered | float | Y | the number of recovered cases. |
-			
+
 接口示例
 
 ```python
@@ -1818,7 +1826,7 @@ print(covid_19_csse_daily_df)
 | Country/Region | str | Y | country/region name conforming to WHO (will be updated). |
 | Lat and Long | float | Y | a coordinates reference for the user. |
 | Date fields | float | Y |  M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file. |
-			
+
 接口示例
 
 ```python
@@ -1831,53 +1839,53 @@ print(covid_19_csse_us_confirmed_df)
 
 ```
            UID iso2 iso3  code3     FIPS      Admin2  \
-0           16   AS  ASM     16     60.0         NaN   
-1          316   GU  GUM    316     66.0         NaN   
-2          580   MP  MNP    580     69.0         NaN   
-3          630   PR  PRI    630     72.0         NaN   
-4          850   VI  VIR    850     78.0         NaN   
-        ...  ...  ...    ...      ...         ...   
-3248  84090053   US  USA    840  90053.0  Unassigned   
-3249  84090054   US  USA    840  90054.0  Unassigned   
-3250  84090055   US  USA    840  90055.0  Unassigned   
-3251  84090056   US  USA    840  90056.0  Unassigned   
-3252  84099999   US  USA    840  99999.0         NaN   
+0           16   AS  ASM     16     60.0         NaN
+1          316   GU  GUM    316     66.0         NaN
+2          580   MP  MNP    580     69.0         NaN
+3          630   PR  PRI    630     72.0         NaN
+4          850   VI  VIR    850     78.0         NaN
+        ...  ...  ...    ...      ...         ...
+3248  84090053   US  USA    840  90053.0  Unassigned
+3249  84090054   US  USA    840  90054.0  Unassigned
+3250  84090055   US  USA    840  90055.0  Unassigned
+3251  84090056   US  USA    840  90056.0  Unassigned
+3252  84099999   US  USA    840  99999.0         NaN
                 Province_State Country_Region      Lat     Long_  \
-0               American Samoa             US -14.2710 -170.1320   
-1                         Guam             US  13.4443  144.7937   
-2     Northern Mariana Islands             US  15.0979  145.6739   
-3                  Puerto Rico             US  18.2208  -66.5901   
-4               Virgin Islands             US  18.3358  -64.8963   
-                        ...            ...      ...       ...   
-3248                Washington             US   0.0000    0.0000   
-3249             West Virginia             US   0.0000    0.0000   
-3250                 Wisconsin             US   0.0000    0.0000   
-3251                   Wyoming             US   0.0000    0.0000   
-3252            Grand Princess             US   0.0000    0.0000   
+0               American Samoa             US -14.2710 -170.1320
+1                         Guam             US  13.4443  144.7937
+2     Northern Mariana Islands             US  15.0979  145.6739
+3                  Puerto Rico             US  18.2208  -66.5901
+4               Virgin Islands             US  18.3358  -64.8963
+                        ...            ...      ...       ...
+3248                Washington             US   0.0000    0.0000
+3249             West Virginia             US   0.0000    0.0000
+3250                 Wisconsin             US   0.0000    0.0000
+3251                   Wyoming             US   0.0000    0.0000
+3252            Grand Princess             US   0.0000    0.0000
                        Combined_Key  1/22/20  1/23/20  1/24/20  1/25/20  \
-0                American Samoa, US        0        0        0        0   
-1                          Guam, US        0        0        0        0   
-2      Northern Mariana Islands, US        0        0        0        0   
-3                   Puerto Rico, US        0        0        0        0   
-4                Virgin Islands, US        0        0        0        0   
-                             ...      ...      ...      ...      ...   
-3248     Unassigned, Washington, US        0        0        0        0   
-3249  Unassigned, West Virginia, US        0        0        0        0   
-3250      Unassigned, Wisconsin, US        0        0        0        0   
-3251        Unassigned, Wyoming, US        0        0        0        0   
-3252             Grand Princess, US        0        0        0        0   
-      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20  
-0           0        0       0       0       0       0       0       0  
-1          58       69      77      82      84      93     112     113  
-2           0        2       6       6       6       6       6       6  
-3         174      239     286     316     316     452     475     513  
-4           0       30      30      30      37      40      42      43  
-       ...      ...     ...     ...     ...     ...     ...     ...  
-3248      274      274     303     344     501     483     533     648  
-3249        0        0       0       0       0       0       0       0  
-3250        0        0       0       0       0       0       0       0  
-3251        0        0       0       0       0       0       0       0  
-3252      103      103     103     103     103     103     103     103  
+0                American Samoa, US        0        0        0        0
+1                          Guam, US        0        0        0        0
+2      Northern Mariana Islands, US        0        0        0        0
+3                   Puerto Rico, US        0        0        0        0
+4                Virgin Islands, US        0        0        0        0
+                             ...      ...      ...      ...      ...
+3248     Unassigned, Washington, US        0        0        0        0
+3249  Unassigned, West Virginia, US        0        0        0        0
+3250      Unassigned, Wisconsin, US        0        0        0        0
+3251        Unassigned, Wyoming, US        0        0        0        0
+3252             Grand Princess, US        0        0        0        0
+      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20
+0           0        0       0       0       0       0       0       0
+1          58       69      77      82      84      93     112     113
+2           0        2       6       6       6       6       6       6
+3         174      239     286     316     316     452     475     513
+4           0       30      30      30      37      40      42      43
+       ...      ...     ...     ...     ...     ...     ...     ...
+3248      274      274     303     344     501     483     533     648
+3249        0        0       0       0       0       0       0       0
+3250        0        0       0       0       0       0       0       0
+3251        0        0       0       0       0       0       0       0
+3252      103      103     103     103     103     103     103     103
 ```
 
 ##### 美国死亡
@@ -1904,7 +1912,7 @@ print(covid_19_csse_us_confirmed_df)
 | Country/Region | str | Y | country/region name conforming to WHO (will be updated). |
 | Lat and Long | float | Y | a coordinates reference for the user. |
 | Date fields | float | Y |  M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file. |
-			
+
 接口示例
 
 ```python
@@ -1917,53 +1925,53 @@ print(covid_19_csse_us_death_df)
 
 ```
            UID iso2 iso3  code3     FIPS      Admin2  \
-0           16   AS  ASM     16     60.0         NaN   
-1          316   GU  GUM    316     66.0         NaN   
-2          580   MP  MNP    580     69.0         NaN   
-3          630   PR  PRI    630     72.0         NaN   
-4          850   VI  VIR    850     78.0         NaN   
-        ...  ...  ...    ...      ...         ...   
-3248  84090053   US  USA    840  90053.0  Unassigned   
-3249  84090054   US  USA    840  90054.0  Unassigned   
-3250  84090055   US  USA    840  90055.0  Unassigned   
-3251  84090056   US  USA    840  90056.0  Unassigned   
-3252  84099999   US  USA    840  99999.0         NaN   
+0           16   AS  ASM     16     60.0         NaN
+1          316   GU  GUM    316     66.0         NaN
+2          580   MP  MNP    580     69.0         NaN
+3          630   PR  PRI    630     72.0         NaN
+4          850   VI  VIR    850     78.0         NaN
+        ...  ...  ...    ...      ...         ...
+3248  84090053   US  USA    840  90053.0  Unassigned
+3249  84090054   US  USA    840  90054.0  Unassigned
+3250  84090055   US  USA    840  90055.0  Unassigned
+3251  84090056   US  USA    840  90056.0  Unassigned
+3252  84099999   US  USA    840  99999.0         NaN
                 Province_State Country_Region      Lat     Long_  \
-0               American Samoa             US -14.2710 -170.1320   
-1                         Guam             US  13.4443  144.7937   
-2     Northern Mariana Islands             US  15.0979  145.6739   
-3                  Puerto Rico             US  18.2208  -66.5901   
-4               Virgin Islands             US  18.3358  -64.8963   
-                        ...            ...      ...       ...   
-3248                Washington             US   0.0000    0.0000   
-3249             West Virginia             US   0.0000    0.0000   
-3250                 Wisconsin             US   0.0000    0.0000   
-3251                   Wyoming             US   0.0000    0.0000   
-3252            Grand Princess             US   0.0000    0.0000   
+0               American Samoa             US -14.2710 -170.1320
+1                         Guam             US  13.4443  144.7937
+2     Northern Mariana Islands             US  15.0979  145.6739
+3                  Puerto Rico             US  18.2208  -66.5901
+4               Virgin Islands             US  18.3358  -64.8963
+                        ...            ...      ...       ...
+3248                Washington             US   0.0000    0.0000
+3249             West Virginia             US   0.0000    0.0000
+3250                 Wisconsin             US   0.0000    0.0000
+3251                   Wyoming             US   0.0000    0.0000
+3252            Grand Princess             US   0.0000    0.0000
                        Combined_Key  1/22/20  1/23/20  1/24/20  1/25/20  \
-0                American Samoa, US        0        0        0        0   
-1                          Guam, US        0        0        0        0   
-2      Northern Mariana Islands, US        0        0        0        0   
-3                   Puerto Rico, US        0        0        0        0   
-4                Virgin Islands, US        0        0        0        0   
-                             ...      ...      ...      ...      ...   
-3248     Unassigned, Washington, US        0        0        0        0   
-3249  Unassigned, West Virginia, US        0        0        0        0   
-3250      Unassigned, Wisconsin, US        0        0        0        0   
-3251        Unassigned, Wyoming, US        0        0        0        0   
-3252             Grand Princess, US        0        0        0        0   
-      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20  
-0           0        0       0       0       0       0       0       0  
-1          58       69      77      82      84      93     112     113  
-2           0        2       6       6       6       6       6       6  
-3         174      239     286     316     316     452     475     513  
-4           0       30      30      30      37      40      42      43  
-       ...      ...     ...     ...     ...     ...     ...     ...  
-3248      274      274     303     344     501     483     533     648  
-3249        0        0       0       0       0       0       0       0  
-3250        0        0       0       0       0       0       0       0  
-3251        0        0       0       0       0       0       0       0  
-3252      103      103     103     103     103     103     103     103  
+0                American Samoa, US        0        0        0        0
+1                          Guam, US        0        0        0        0
+2      Northern Mariana Islands, US        0        0        0        0
+3                   Puerto Rico, US        0        0        0        0
+4                Virgin Islands, US        0        0        0        0
+                             ...      ...      ...      ...      ...
+3248     Unassigned, Washington, US        0        0        0        0
+3249  Unassigned, West Virginia, US        0        0        0        0
+3250      Unassigned, Wisconsin, US        0        0        0        0
+3251        Unassigned, Wyoming, US        0        0        0        0
+3252             Grand Princess, US        0        0        0        0
+      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20
+0           0        0       0       0       0       0       0       0
+1          58       69      77      82      84      93     112     113
+2           0        2       6       6       6       6       6       6
+3         174      239     286     316     316     452     475     513
+4           0       30      30      30      37      40      42      43
+       ...      ...     ...     ...     ...     ...     ...     ...
+3248      274      274     303     344     501     483     533     648
+3249        0        0       0       0       0       0       0       0
+3250        0        0       0       0       0       0       0       0
+3251        0        0       0       0       0       0       0       0
+3252      103      103     103     103     103     103     103     103
 ```
 
 ##### 全球确诊
@@ -1972,25 +1980,25 @@ print(covid_19_csse_us_death_df)
 
 目标地址: https://github.com/CSSEGISandData/COVID-19
 
-描述: 获取全球确诊数据所有历史数据, 如本地无法读取数据，请参考 **[答疑专栏]** 问题 12 修改本地 host 后获取
+描述: 全球确诊数据所有历史数据, 如本地无法读取数据，请参考 **[答疑专栏]** 问题 12 修改本地 host 后获取
 
 限量: 单次返回所有历史数据，每日更新
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| - | - | - | - |
+| 名称  | 类型  | 必选  | 描述  |
+|-----|-----|-----|-----|
+| -   | -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ------- |
-| Province/State | str | Y | Province/State: China - province name; US/Canada/Australia/ - city name, state/province name; Others - name of the event (e.g., "Diamond Princess" cruise ship); other countries - blank. |
-| Country/Region | str | Y | country/region name conforming to WHO (will be updated). |
-| Lat and Long | float | Y | a coordinates reference for the user. |
-| Date fields | float | Y |  M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file. |
-			
+| 名称             | 类型    | 默认显示 | 描述                                                                                                                                                                                        |
+|----------------|-------|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Province/State | str   | Y    | Province/State: China - province name; US/Canada/Australia/ - city name, state/province name; Others - name of the event (e.g., "Diamond Princess" cruise ship); other countries - blank. |
+| Country/Region | str   | Y    | country/region name conforming to WHO (will be updated).                                                                                                                                  |
+| Lat and Long   | float | Y    | a coordinates reference for the user.                                                                                                                                                     |
+| Date fields    | float | Y    | M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file.                                                                                                                                    |
+
 接口示例
 
 ```python
@@ -2003,65 +2011,65 @@ print(covid_19_csse_global_confirmed_df)
 
 ```
            UID iso2 iso3  code3     FIPS      Admin2  \
-0           16   AS  ASM     16     60.0         NaN   
-1          316   GU  GUM    316     66.0         NaN   
-2          580   MP  MNP    580     69.0         NaN   
-3          630   PR  PRI    630     72.0         NaN   
-4          850   VI  VIR    850     78.0         NaN   
-        ...  ...  ...    ...      ...         ...   
-3248  84090053   US  USA    840  90053.0  Unassigned   
-3249  84090054   US  USA    840  90054.0  Unassigned   
-3250  84090055   US  USA    840  90055.0  Unassigned   
-3251  84090056   US  USA    840  90056.0  Unassigned   
-3252  84099999   US  USA    840  99999.0         NaN   
+0           16   AS  ASM     16     60.0         NaN
+1          316   GU  GUM    316     66.0         NaN
+2          580   MP  MNP    580     69.0         NaN
+3          630   PR  PRI    630     72.0         NaN
+4          850   VI  VIR    850     78.0         NaN
+        ...  ...  ...    ...      ...         ...
+3248  84090053   US  USA    840  90053.0  Unassigned
+3249  84090054   US  USA    840  90054.0  Unassigned
+3250  84090055   US  USA    840  90055.0  Unassigned
+3251  84090056   US  USA    840  90056.0  Unassigned
+3252  84099999   US  USA    840  99999.0         NaN
                 Province_State Country_Region      Lat     Long_  \
-0               American Samoa             US -14.2710 -170.1320   
-1                         Guam             US  13.4443  144.7937   
-2     Northern Mariana Islands             US  15.0979  145.6739   
-3                  Puerto Rico             US  18.2208  -66.5901   
-4               Virgin Islands             US  18.3358  -64.8963   
-                        ...            ...      ...       ...   
-3248                Washington             US   0.0000    0.0000   
-3249             West Virginia             US   0.0000    0.0000   
-3250                 Wisconsin             US   0.0000    0.0000   
-3251                   Wyoming             US   0.0000    0.0000   
-3252            Grand Princess             US   0.0000    0.0000   
+0               American Samoa             US -14.2710 -170.1320
+1                         Guam             US  13.4443  144.7937
+2     Northern Mariana Islands             US  15.0979  145.6739
+3                  Puerto Rico             US  18.2208  -66.5901
+4               Virgin Islands             US  18.3358  -64.8963
+                        ...            ...      ...       ...
+3248                Washington             US   0.0000    0.0000
+3249             West Virginia             US   0.0000    0.0000
+3250                 Wisconsin             US   0.0000    0.0000
+3251                   Wyoming             US   0.0000    0.0000
+3252            Grand Princess             US   0.0000    0.0000
                        Combined_Key  1/22/20  1/23/20  1/24/20  1/25/20  \
-0                American Samoa, US        0        0        0        0   
-1                          Guam, US        0        0        0        0   
-2      Northern Mariana Islands, US        0        0        0        0   
-3                   Puerto Rico, US        0        0        0        0   
-4                Virgin Islands, US        0        0        0        0   
-                             ...      ...      ...      ...      ...   
-3248     Unassigned, Washington, US        0        0        0        0   
-3249  Unassigned, West Virginia, US        0        0        0        0   
-3250      Unassigned, Wisconsin, US        0        0        0        0   
-3251        Unassigned, Wyoming, US        0        0        0        0   
-3252             Grand Princess, US        0        0        0        0   
+0                American Samoa, US        0        0        0        0
+1                          Guam, US        0        0        0        0
+2      Northern Mariana Islands, US        0        0        0        0
+3                   Puerto Rico, US        0        0        0        0
+4                Virgin Islands, US        0        0        0        0
+                             ...      ...      ...      ...      ...
+3248     Unassigned, Washington, US        0        0        0        0
+3249  Unassigned, West Virginia, US        0        0        0        0
+3250      Unassigned, Wisconsin, US        0        0        0        0
+3251        Unassigned, Wyoming, US        0        0        0        0
+3252             Grand Princess, US        0        0        0        0
       1/26/20  1/27/20  1/28/20  1/29/20  1/30/20  1/31/20  2/1/20  2/2/20  \
-0           0        0        0        0        0        0       0       0   
-1           0        0        0        0        0        0       0       0   
-2           0        0        0        0        0        0       0       0   
-3           0        0        0        0        0        0       0       0   
-4           0        0        0        0        0        0       0       0   
-       ...      ...      ...      ...      ...      ...     ...     ...   
-3248        0        0        0        0        0        0       0       0   
-3249        0        0        0        0        0        0       0       0   
-3250        0        0        0        0        0        0       0       0   
-3251        0        0        0        0        0        0       0       0   
-3252        0        0        0        0        0        0       0       0   
-      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20  
-0           0        0       0       0       0       0       0       0  
-1          58       69      77      82      84      93     112     113  
-2           0        2       6       6       6       6       6       6  
-3         174      239     286     316     316     452     475     513  
-4           0       30      30      30      37      40      42      43  
-       ...      ...     ...     ...     ...     ...     ...     ...  
-3248      274      274     303     344     501     483     533     648  
-3249        0        0       0       0       0       0       0       0  
-3250        0        0       0       0       0       0       0       0  
-3251        0        0       0       0       0       0       0       0  
-3252      103      103     103     103     103     103     103     103  
+0           0        0        0        0        0        0       0       0
+1           0        0        0        0        0        0       0       0
+2           0        0        0        0        0        0       0       0
+3           0        0        0        0        0        0       0       0
+4           0        0        0        0        0        0       0       0
+       ...      ...      ...      ...      ...      ...     ...     ...
+3248        0        0        0        0        0        0       0       0
+3249        0        0        0        0        0        0       0       0
+3250        0        0        0        0        0        0       0       0
+3251        0        0        0        0        0        0       0       0
+3252        0        0        0        0        0        0       0       0
+      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20
+0           0        0       0       0       0       0       0       0
+1          58       69      77      82      84      93     112     113
+2           0        2       6       6       6       6       6       6
+3         174      239     286     316     316     452     475     513
+4           0       30      30      30      37      40      42      43
+       ...      ...     ...     ...     ...     ...     ...     ...
+3248      274      274     303     344     501     483     533     648
+3249        0        0       0       0       0       0       0       0
+3250        0        0       0       0       0       0       0       0
+3251        0        0       0       0       0       0       0       0
+3252      103      103     103     103     103     103     103     103
 ```
 
 ##### 全球死亡
@@ -2088,11 +2096,12 @@ print(covid_19_csse_global_confirmed_df)
 | Country/Region | str | Y | country/region name conforming to WHO (will be updated). |
 | Lat and Long | float | Y | a coordinates reference for the user. |
 | Date fields | float | Y |  M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file. |
-			
+
 接口示例
 
 ```python
 import akshare as ak
+
 covid_19_csse_global_death_df = ak.covid_19_csse_global_death()
 print(covid_19_csse_global_death_df)
 ```
@@ -2101,65 +2110,65 @@ print(covid_19_csse_global_death_df)
 
 ```
            UID iso2 iso3  code3     FIPS      Admin2  \
-0           16   AS  ASM     16     60.0         NaN   
-1          316   GU  GUM    316     66.0         NaN   
-2          580   MP  MNP    580     69.0         NaN   
-3          630   PR  PRI    630     72.0         NaN   
-4          850   VI  VIR    850     78.0         NaN   
-        ...  ...  ...    ...      ...         ...   
-3248  84090053   US  USA    840  90053.0  Unassigned   
-3249  84090054   US  USA    840  90054.0  Unassigned   
-3250  84090055   US  USA    840  90055.0  Unassigned   
-3251  84090056   US  USA    840  90056.0  Unassigned   
-3252  84099999   US  USA    840  99999.0         NaN   
+0           16   AS  ASM     16     60.0         NaN
+1          316   GU  GUM    316     66.0         NaN
+2          580   MP  MNP    580     69.0         NaN
+3          630   PR  PRI    630     72.0         NaN
+4          850   VI  VIR    850     78.0         NaN
+        ...  ...  ...    ...      ...         ...
+3248  84090053   US  USA    840  90053.0  Unassigned
+3249  84090054   US  USA    840  90054.0  Unassigned
+3250  84090055   US  USA    840  90055.0  Unassigned
+3251  84090056   US  USA    840  90056.0  Unassigned
+3252  84099999   US  USA    840  99999.0         NaN
                 Province_State Country_Region      Lat     Long_  \
-0               American Samoa             US -14.2710 -170.1320   
-1                         Guam             US  13.4443  144.7937   
-2     Northern Mariana Islands             US  15.0979  145.6739   
-3                  Puerto Rico             US  18.2208  -66.5901   
-4               Virgin Islands             US  18.3358  -64.8963   
-                        ...            ...      ...       ...   
-3248                Washington             US   0.0000    0.0000   
-3249             West Virginia             US   0.0000    0.0000   
-3250                 Wisconsin             US   0.0000    0.0000   
-3251                   Wyoming             US   0.0000    0.0000   
-3252            Grand Princess             US   0.0000    0.0000   
+0               American Samoa             US -14.2710 -170.1320
+1                         Guam             US  13.4443  144.7937
+2     Northern Mariana Islands             US  15.0979  145.6739
+3                  Puerto Rico             US  18.2208  -66.5901
+4               Virgin Islands             US  18.3358  -64.8963
+                        ...            ...      ...       ...
+3248                Washington             US   0.0000    0.0000
+3249             West Virginia             US   0.0000    0.0000
+3250                 Wisconsin             US   0.0000    0.0000
+3251                   Wyoming             US   0.0000    0.0000
+3252            Grand Princess             US   0.0000    0.0000
                        Combined_Key  1/22/20  1/23/20  1/24/20  1/25/20  \
-0                American Samoa, US        0        0        0        0   
-1                          Guam, US        0        0        0        0   
-2      Northern Mariana Islands, US        0        0        0        0   
-3                   Puerto Rico, US        0        0        0        0   
-4                Virgin Islands, US        0        0        0        0   
-                             ...      ...      ...      ...      ...   
-3248     Unassigned, Washington, US        0        0        0        0   
-3249  Unassigned, West Virginia, US        0        0        0        0   
-3250      Unassigned, Wisconsin, US        0        0        0        0   
-3251        Unassigned, Wyoming, US        0        0        0        0   
-3252             Grand Princess, US        0        0        0        0   
+0                American Samoa, US        0        0        0        0
+1                          Guam, US        0        0        0        0
+2      Northern Mariana Islands, US        0        0        0        0
+3                   Puerto Rico, US        0        0        0        0
+4                Virgin Islands, US        0        0        0        0
+                             ...      ...      ...      ...      ...
+3248     Unassigned, Washington, US        0        0        0        0
+3249  Unassigned, West Virginia, US        0        0        0        0
+3250      Unassigned, Wisconsin, US        0        0        0        0
+3251        Unassigned, Wyoming, US        0        0        0        0
+3252             Grand Princess, US        0        0        0        0
       1/26/20  1/27/20  1/28/20  1/29/20  1/30/20  1/31/20  2/1/20  2/2/20  \
-0           0        0        0        0        0        0       0       0   
-1           0        0        0        0        0        0       0       0   
-2           0        0        0        0        0        0       0       0   
-3           0        0        0        0        0        0       0       0   
-4           0        0        0        0        0        0       0       0   
-       ...      ...      ...      ...      ...      ...     ...     ...   
-3248        0        0        0        0        0        0       0       0   
-3249        0        0        0        0        0        0       0       0   
-3250        0        0        0        0        0        0       0       0   
-3251        0        0        0        0        0        0       0       0   
-3252        0        0        0        0        0        0       0       0   
-      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20  
-0           0        0       0       0       0       0       0       0  
-1          58       69      77      82      84      93     112     113  
-2           0        2       6       6       6       6       6       6  
-3         174      239     286     316     316     452     475     513  
-4           0       30      30      30      37      40      42      43  
-       ...      ...     ...     ...     ...     ...     ...     ...  
-3248      274      274     303     344     501     483     533     648  
-3249        0        0       0       0       0       0       0       0  
-3250        0        0       0       0       0       0       0       0  
-3251        0        0       0       0       0       0       0       0  
-3252      103      103     103     103     103     103     103     103  
+0           0        0        0        0        0        0       0       0
+1           0        0        0        0        0        0       0       0
+2           0        0        0        0        0        0       0       0
+3           0        0        0        0        0        0       0       0
+4           0        0        0        0        0        0       0       0
+       ...      ...      ...      ...      ...      ...     ...     ...
+3248        0        0        0        0        0        0       0       0
+3249        0        0        0        0        0        0       0       0
+3250        0        0        0        0        0        0       0       0
+3251        0        0        0        0        0        0       0       0
+3252        0        0        0        0        0        0       0       0
+      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20
+0           0        0       0       0       0       0       0       0
+1          58       69      77      82      84      93     112     113
+2           0        2       6       6       6       6       6       6
+3         174      239     286     316     316     452     475     513
+4           0       30      30      30      37      40      42      43
+       ...      ...     ...     ...     ...     ...     ...     ...
+3248      274      274     303     344     501     483     533     648
+3249        0        0       0       0       0       0       0       0
+3250        0        0       0       0       0       0       0       0
+3251        0        0       0       0       0       0       0       0
+3252      103      103     103     103     103     103     103     103
 ```
 
 ##### 全球治愈
@@ -2174,23 +2183,24 @@ print(covid_19_csse_global_death_df)
 
 输入参数
 
-| 名称   | 类型 | 必选 | 描述                                                                              |
-| -------- | ---- | ---- | --- |
-| - | - | - | - |
+| 名称  | 类型  | 描述  |
+|-----|-----|-----|
+| -   | -   | -   |
 
 输出参数
 
-| 名称          | 类型 | 默认显示 | 描述           |
-| --------------- | ----- | -------- | ------- |
-| Province/State | str | Y | Province/State: China - province name; US/Canada/Australia/ - city name, state/province name; Others - name of the event (e.g., "Diamond Princess" cruise ship); other countries - blank. |
-| Country/Region | str | Y | country/region name conforming to WHO (will be updated). |
-| Lat and Long | float | Y | a coordinates reference for the user. |
-| Date fields | float | Y |  M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file. |
-			
+| 名称             | 类型    | 描述                                                                                                                                                                                        |
+|----------------|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Province/State | str   | Province/State: China - province name; US/Canada/Australia/ - city name, state/province name; Others - name of the event (e.g., "Diamond Princess" cruise ship); other countries - blank. |
+| Country/Region | str   | country/region name conforming to WHO (will be updated).                                                                                                                                  |
+| Lat and Long   | float | a coordinates reference for the user.                                                                                                                                                     |
+| Date fields    | float | M/DD/YYYY (UTC), the same data as MM-DD-YYYY.csv file.                                                                                                                                    |
+
 接口示例
 
 ```python
 import akshare as ak
+
 covid_19_csse_global_recovered_df = ak.covid_19_csse_global_recovered()
 print(covid_19_csse_global_recovered_df)
 ```
@@ -2199,63 +2209,63 @@ print(covid_19_csse_global_recovered_df)
 
 ```
            UID iso2 iso3  code3     FIPS      Admin2  \
-0           16   AS  ASM     16     60.0         NaN   
-1          316   GU  GUM    316     66.0         NaN   
-2          580   MP  MNP    580     69.0         NaN   
-3          630   PR  PRI    630     72.0         NaN   
-4          850   VI  VIR    850     78.0         NaN   
-        ...  ...  ...    ...      ...         ...   
-3248  84090053   US  USA    840  90053.0  Unassigned   
-3249  84090054   US  USA    840  90054.0  Unassigned   
-3250  84090055   US  USA    840  90055.0  Unassigned   
-3251  84090056   US  USA    840  90056.0  Unassigned   
-3252  84099999   US  USA    840  99999.0         NaN   
+0           16   AS  ASM     16     60.0         NaN
+1          316   GU  GUM    316     66.0         NaN
+2          580   MP  MNP    580     69.0         NaN
+3          630   PR  PRI    630     72.0         NaN
+4          850   VI  VIR    850     78.0         NaN
+        ...  ...  ...    ...      ...         ...
+3248  84090053   US  USA    840  90053.0  Unassigned
+3249  84090054   US  USA    840  90054.0  Unassigned
+3250  84090055   US  USA    840  90055.0  Unassigned
+3251  84090056   US  USA    840  90056.0  Unassigned
+3252  84099999   US  USA    840  99999.0         NaN
                 Province_State Country_Region      Lat     Long_  \
-0               American Samoa             US -14.2710 -170.1320   
-1                         Guam             US  13.4443  144.7937   
-2     Northern Mariana Islands             US  15.0979  145.6739   
-3                  Puerto Rico             US  18.2208  -66.5901   
-4               Virgin Islands             US  18.3358  -64.8963   
-                        ...            ...      ...       ...   
-3248                Washington             US   0.0000    0.0000   
-3249             West Virginia             US   0.0000    0.0000   
-3250                 Wisconsin             US   0.0000    0.0000   
-3251                   Wyoming             US   0.0000    0.0000   
-3252            Grand Princess             US   0.0000    0.0000   
+0               American Samoa             US -14.2710 -170.1320
+1                         Guam             US  13.4443  144.7937
+2     Northern Mariana Islands             US  15.0979  145.6739
+3                  Puerto Rico             US  18.2208  -66.5901
+4               Virgin Islands             US  18.3358  -64.8963
+                        ...            ...      ...       ...
+3248                Washington             US   0.0000    0.0000
+3249             West Virginia             US   0.0000    0.0000
+3250                 Wisconsin             US   0.0000    0.0000
+3251                   Wyoming             US   0.0000    0.0000
+3252            Grand Princess             US   0.0000    0.0000
                        Combined_Key  1/22/20  1/23/20  1/24/20  1/25/20  \
-0                American Samoa, US        0        0        0        0   
-1                          Guam, US        0        0        0        0   
-2      Northern Mariana Islands, US        0        0        0        0   
-3                   Puerto Rico, US        0        0        0        0   
-4                Virgin Islands, US        0        0        0        0   
-                             ...      ...      ...      ...      ...   
-3248     Unassigned, Washington, US        0        0        0        0   
-3249  Unassigned, West Virginia, US        0        0        0        0   
-3250      Unassigned, Wisconsin, US        0        0        0        0   
-3251        Unassigned, Wyoming, US        0        0        0        0   
-3252             Grand Princess, US        0        0        0        0   
+0                American Samoa, US        0        0        0        0
+1                          Guam, US        0        0        0        0
+2      Northern Mariana Islands, US        0        0        0        0
+3                   Puerto Rico, US        0        0        0        0
+4                Virgin Islands, US        0        0        0        0
+                             ...      ...      ...      ...      ...
+3248     Unassigned, Washington, US        0        0        0        0
+3249  Unassigned, West Virginia, US        0        0        0        0
+3250      Unassigned, Wisconsin, US        0        0        0        0
+3251        Unassigned, Wyoming, US        0        0        0        0
+3252             Grand Princess, US        0        0        0        0
       1/26/20  1/27/20  1/28/20  1/29/20  1/30/20  1/31/20  2/1/20  2/2/20  \
-0           0        0        0        0        0        0       0       0   
-1           0        0        0        0        0        0       0       0   
-2           0        0        0        0        0        0       0       0   
-3           0        0        0        0        0        0       0       0   
-4           0        0        0        0        0        0       0       0   
-       ...      ...      ...      ...      ...      ...     ...     ...   
-3248        0        0        0        0        0        0       0       0   
-3249        0        0        0        0        0        0       0       0   
-3250        0        0        0        0        0        0       0       0   
-3251        0        0        0        0        0        0       0       0   
-3252        0        0        0        0        0        0       0       0   
-      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20  
-0           0        0       0       0       0       0       0       0  
-1          58       69      77      82      84      93     112     113  
-2           0        2       6       6       6       6       6       6  
-3         174      239     286     316     316     452     475     513  
-4           0       30      30      30      37      40      42      43  
-       ...      ...     ...     ...     ...     ...     ...     ...  
-3248      274      274     303     344     501     483     533     648  
-3249        0        0       0       0       0       0       0       0  
-3250        0        0       0       0       0       0       0       0  
-3251        0        0       0       0       0       0       0       0  
-3252      103      103     103     103     103     103     103     103  
+0           0        0        0        0        0        0       0       0
+1           0        0        0        0        0        0       0       0
+2           0        0        0        0        0        0       0       0
+3           0        0        0        0        0        0       0       0
+4           0        0        0        0        0        0       0       0
+       ...      ...      ...      ...      ...      ...     ...     ...
+3248        0        0        0        0        0        0       0       0
+3249        0        0        0        0        0        0       0       0
+3250        0        0        0        0        0        0       0       0
+3251        0        0        0        0        0        0       0       0
+3252        0        0        0        0        0        0       0       0
+      3/30/20  3/31/20  4/1/20  4/2/20  4/3/20  4/4/20  4/5/20  4/6/20
+0           0        0       0       0       0       0       0       0
+1          58       69      77      82      84      93     112     113
+2           0        2       6       6       6       6       6       6
+3         174      239     286     316     316     452     475     513
+4           0       30      30      30      37      40      42      43
+       ...      ...     ...     ...     ...     ...     ...     ...
+3248      274      274     303     344     501     483     533     648
+3249        0        0       0       0       0       0       0       0
+3250        0        0       0       0       0       0       0       0
+3251        0        0       0       0       0       0       0       0
+3252      103      103     103     103     103     103     103     103
 ```
